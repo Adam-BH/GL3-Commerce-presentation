@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commerce international : deux crises, un commerce transformé</title>
+
+<!--
+╔══════════════════════════════════════════════════════════════════════╗
+║  COMMENT MODIFIER CE FICHIER                                         ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  • Chaque diapositive est un bloc <section class="slide"> repéré     ║
+║    par un commentaire  « DIAPO n ».  Tout le texte est du HTML      ║
+║    normal : ouvrez le fichier dans un éditeur, changez le texte.     ║
+║  • Titres : <span class="a"> = 1re partie (encre),                   ║
+║             <span class="b"> = 2e partie (violet, italique).         ║
+║  • data-step="1", "2"… = élément qui apparaît à la Nième pression    ║
+║    de la flèche → avant de passer à la diapo suivante.               ║
+║  • Couleurs : variables CSS juste en dessous (:root).                ║
+║  • Les [crochets] sont des champs à remplir (noms, cours, date).     ║
+║                                                                      ║
+║  NAVIGATION : → ↓ Espace = suivant · ← ↑ = précédent                 ║
+║               Début / Fin · F = plein écran                          ║
+╚══════════════════════════════════════════════════════════════════════╝
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* Palette (inspirée de la charte Obsidian) */
+  --aubergine:#211A35;   /* fonds sombres */
+  --ivory:#FAF8F3;       /* fond principal */
+  --violet:#7852EE;      /* accent principal */
+  --violet-ink:#5A38C8;  /* violet foncé pour petits textes */
+  --lilac:#A882FF;
+  --lavender:#E8E1F8;
+  --mint:#DDF4EE;        /* adaptation, reprise */
+  --teal:#0B776E;        /* données, résilience */
+  --coral:#C45B52;       /* chocs, inflation, risques */
+  --peach:#F6E1D6;
+  --gold:#E5B551;        /* énergie, blé, ressources */
+  --ink:#211A35;
+  --muted:#6B6480;
+
+  /* Typographie */
+  --display:'Cormorant Garamond','EB Garamond',Georgia,serif;
+  --text:'Libre Baskerville',Georgia,'Times New Roman',serif;
+  --ui:'Inter','Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0e0a18;overflow:hidden}
+body{font-family:var(--text);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* ───────── Scène 1920×1080 mise à l’échelle ───────── */
+#stage{
+  position:absolute;left:50%;top:50%;width:1920px;height:1080px;
+  transform:translate(-50%,-50%) scale(var(--s,1));transform-origin:center;
+  background:var(--ivory);overflow:hidden;
+}
+.slide{
+  position:absolute;inset:0;padding:96px 120px 0;
+  opacity:0;visibility:hidden;
+  transition:opacity .6s ease, visibility 0s linear .6s;
+  background:var(--ivory);color:var(--ink);
+}
+.slide.active{opacity:1;visibility:visible;transition:opacity .6s ease}
+.slide.dark{background:var(--aubergine);color:var(--ivory)}
+
+/* ───────── Titres ───────── */
+.kicker{
+  font:600 18px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--violet-ink);margin-bottom:30px;
+}
+.dark .kicker{color:var(--lilac)}
+h1,h2{font-family:var(--display);font-weight:600;letter-spacing:-.012em;line-height:1.02}
+h2{font-size:104px}
+h2.m{font-size:88px}
+h1{font-size:112px}
+h1 .a,h1 .b,h2 .a,h2 .b{display:block}
+h1 .a,h2 .a{color:var(--ink)}
+h1 .b,h2 .b{font-style:italic;color:var(--violet);font-size:1.05em}
+.dark h1 .a,.dark h2 .a{color:var(--ivory)}
+.dark h1 .b,.dark h2 .b{color:var(--lilac)}
+
+/* révélation des titres, une seule fois à l’arrivée sur la diapo */
+@keyframes wipe{
+  from{clip-path:inset(-.2em 100% -.2em -.1em)}
+  to{clip-path:inset(-.2em -.5em -.2em -.1em)}
+}
+.slide.active h1 .a,.slide.active h2 .a{animation:wipe 1s cubic-bezier(.2,.7,.2,1) .15s both}
+.slide.active h1 .b,.slide.active h2 .b{animation:wipe 1.1s cubic-bezier(.2,.7,.2,1) .6s both}
+
+/* ───────── Texte courant ───────── */
+.lead{font:400 28px/1.6 var(--text);max-width:760px}
+.body{font:400 28px/1.55 var(--text)}
+.note h3{font:600 40px/1.1 var(--display);margin-bottom:10px}
+.note p{font:400 25px/1.55 var(--text);max-width:700px}
+.note{margin-bottom:36px}
+.hl-v{color:var(--violet-ink);font-weight:700}
+.hl-t{color:var(--teal);font-weight:700}
+.hl-c{color:var(--coral);font-weight:700}
+.src{
+  position:absolute;left:120px;right:120px;bottom:90px;
+  font:400 17px/1.4 var(--ui);color:var(--muted);
+}
+.dark .src{color:rgba(250,248,243,.5)}
+
+/* ───────── Pied de page ───────── */
+.foot{
+  position:absolute;left:120px;right:120px;bottom:38px;
+  display:flex;justify-content:space-between;
+  font:500 16px/1 var(--ui);letter-spacing:.08em;color:var(--muted);
+  border-top:1px solid rgba(33,26,53,.14);padding-top:16px;
+}
+.dark .foot{color:rgba(250,248,243,.55);border-color:rgba(250,248,243,.16)}
+.foot .pg{color:var(--violet-ink);font-weight:600}
+.dark .foot .pg{color:var(--lilac)}
+.prog{position:absolute;left:0;bottom:0;height:4px;background:var(--violet);width:0;transition:width .5s ease;z-index:5}
+
+/* ───────── Étapes (apparitions au clic) ───────── */
+[data-step]{opacity:0;transition:opacity .8s ease}
+[data-step].on{opacity:1}
+
+/* ───────── Diagrammes en cercles ───────── */
+.dg{position:absolute;left:120px;width:1680px}
+.grp{position:absolute;inset:0}
+.n{
+  position:absolute;left:var(--x);top:var(--y);width:var(--d);height:var(--d);
+  transform:translate(-50%,-50%);border-radius:50%;
+  display:grid;place-items:center;text-align:center;padding:14px;
+  font:600 34px/1.05 var(--display);
+}
+.n.lav{background:var(--lavender);color:var(--violet-ink)}
+.n.mint{background:var(--mint);color:var(--teal)}
+.n.peach{background:var(--peach);color:#963C34}
+.n.aub{background:var(--aubergine);color:var(--ivory)}
+.n.vio{background:var(--violet);color:#fff}
+.n.gold{background:var(--gold);color:var(--ink)}
+.n.cor{background:var(--coral);color:#fff}
+.c{
+  position:absolute;left:var(--x);top:var(--y);width:var(--w,340px);
+  transform:translateX(-50%);text-align:center;
+  font:400 24px/1.45 var(--text);
+}
+.c.ui{font:500 20px/1.35 var(--ui);color:var(--muted)}
+.c.it{font:italic 600 38px/1 var(--display);color:var(--violet-ink)}
+svg.ln{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.l-v{stroke:var(--violet);stroke-width:3;fill:none;stroke-linecap:round}
+.l-c{stroke:var(--coral);stroke-width:3;fill:none;stroke-linecap:round}
+.l-t{stroke:var(--teal);stroke-width:3;fill:none;stroke-linecap:round}
+.l-g{stroke:#B98A1E;stroke-width:3;fill:none;stroke-linecap:round}
+.flow{stroke-dasharray:2 13;animation:dash 1.5s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-30}}
+
+/* ───────── Cover ───────── */
+#s1 .meta-top{position:absolute;left:120px;top:96px;font:500 18px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--lilac)}
+#s1 .stack{position:absolute;left:120px;top:190px;width:1050px}
+#s1 h1{font-size:104px;margin-bottom:40px}
+#s1 .sub{width:860px;font:400 30px/1.55 var(--text);color:rgba(250,248,243,.82)}
+#s1 .who{position:absolute;left:120px;bottom:64px;font:500 20px/1.7 var(--ui);color:rgba(250,248,243,.6)}
+#s1 .hint{position:absolute;right:120px;bottom:64px;font:500 17px/1 var(--ui);letter-spacing:.06em;color:rgba(250,248,243,.4)}
+.globe{position:absolute;pointer-events:none}
+#s1 .globe{left:960px;top:20px;width:1040px;height:1040px}
+
+/* ───────── Plan ───────── */
+.plan{position:absolute;left:120px;right:120px;top:470px}
+.plan-grid{display:grid;grid-template-columns:560px 1fr 1fr;column-gap:56px}
+.plan-head{padding-bottom:18px;border-bottom:1px solid rgba(33,26,53,.25);font:italic 400 24px/1.3 var(--text);color:var(--muted)}
+.plan-row{padding:34px 0 36px;border-bottom:1px solid rgba(33,26,53,.14)}
+.plan-name{font:600 58px/1.0 var(--display);display:flex;align-items:center;gap:22px}
+.plan-name i{display:inline-block;width:22px;height:22px;border-radius:50%;flex:none}
+.plan-row p{font:400 27px/1.5 var(--text)}
+
+/* ───────── Dividers ───────── */
+.divider .stack{position:absolute;left:120px;top:240px;width:1000px}
+.divider h1{margin-bottom:44px}
+.divider .lead{color:rgba(250,248,243,.82);margin-bottom:48px}
+.divider .qs{font:400 24px/1.9 var(--text);color:rgba(250,248,243,.78)}
+.divider .qs i{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:16px;background:var(--gold)}
+.divider svg.art{position:absolute;left:960px;top:90px;width:900px;height:900px}
+@keyframes ripple{from{transform:scale(.1);opacity:.95}to{transform:scale(1);opacity:0}}
+.rp{fill:none;stroke-width:2.5;transform-origin:450px 450px}
+.slide.active .rp{animation:ripple 8s cubic-bezier(.25,.6,.3,1) infinite;animation-delay:calc(var(--i)*-1.6s)}
+@keyframes dim{to{fill:#6a5a92;opacity:.4}}
+.rn{fill:var(--lilac)}
+.rn.m{fill:#9ADCC9}
+.slide.active .rn{animation:dim .9s ease forwards;animation-delay:calc(var(--i)*.16s + 1.6s)}
+@keyframes linefade{to{opacity:.1}}
+.ring-lines{stroke:var(--lilac);stroke-width:1.4;opacity:.55}
+.slide.active .ring-lines{animation:linefade 3.5s ease forwards;animation-delay:2.2s}
+
+/* ───────── Alimentation ───────── */
+.big{font:600 200px/0.9 var(--display);letter-spacing:-.02em}
+.big small{font-size:.5em;font-weight:500}
+.dots{position:absolute;left:900px;top:395px;display:grid;grid-template-columns:repeat(10,30px);gap:20px}
+.dots .d{width:30px;height:30px;border-radius:50%;background:var(--lavender);transition:background .5s,transform .5s}
+.st-1 .dots .d.g{background:var(--gold);transform:scale(1.14);transition-delay:calc(var(--k)*45ms)}
+.country{font:400 27px/1.5 var(--text)}
+.country i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--coral);margin-right:16px}
+
+/* ───────── Blocs ───────── */
+.cols{position:absolute;left:120px;right:120px;top:400px;height:520px}
+.col{position:absolute;top:0;width:760px}
+.col h3{font:600 56px/1.05 var(--display);margin-bottom:14px}
+.col svg{display:block;width:600px;height:320px;margin:4px 0 6px}
+.col p{font:400 25px/1.55 var(--text);max-width:700px}
+.vline{position:absolute;left:960px;top:400px;width:1px;height:500px;background:rgba(33,26,53,.18)}
+.sym{font:600 30px var(--ui)}
+
+/* ───────── Graphiques ───────── */
+.ct{font:600 19px/1.2 var(--ui);letter-spacing:.03em;color:var(--muted);margin-bottom:22px}
+.chart1{position:absolute;left:120px;top:400px;width:1060px}
+.crow{display:flex;align-items:center;height:84px}
+.rl{width:470px;flex:none;font:400 26px/1.2 var(--text)}
+.track{display:flex;align-items:center;gap:16px}
+.bar{display:block;height:44px;width:calc(var(--w)*18px);background:var(--coral);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.3s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--k)*.18s + .2s)}
+.bar.t{background:var(--teal)}
+.on .bar{transform:scaleX(1)}
+.track b{font:700 28px var(--display);font-size:34px}
+.track em{font:italic 400 19px/1.3 var(--ui);color:var(--muted)}
+.avg{position:absolute;left:606px;top:70px;height:352px;border-left:2px dashed var(--ink);opacity:.55}
+.avg-l{position:absolute;left:618px;top:402px;font:500 18px var(--ui);color:var(--muted);white-space:nowrap}
+.chart2{position:absolute;left:1260px;top:400px;width:540px}
+.chart2 svg{width:540px;height:450px;display:block;overflow:visible}
+.chart2 text{font-family:var(--ui)}
+
+/* ───────── Boutons de navigation (hors scène) ───────── */
+.navbtn{
+  position:fixed;bottom:18px;width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(250,248,243,.35);background:rgba(33,26,53,.55);
+  color:#fff;font:400 20px/1 var(--ui);cursor:pointer;opacity:0;transition:opacity .3s;
+  backdrop-filter:blur(6px);z-index:10;
+}
+.navbtn:focus-visible{opacity:1;outline:2px solid var(--lilac);outline-offset:3px}
+body.moving .navbtn{opacity:1}
+#prev{right:78px}#next{right:20px}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Définitions des pointes de flèche -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah-v" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#7852EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="ah-c" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#C45B52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="ah-t" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#0B776E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="ah-g" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#B98A1E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs></svg>
+
+<main id="stage">
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 1 — INTRO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide dark" id="s1" data-nofoot>
+  <div class="meta-top">Commerce international</div>
+  <canvas class="globe" width="1400" height="1400"></canvas>
+
+  <div class="stack">
+    <h1>
+      <span class="a">Deux crises mondiales.</span>
+      <span class="b">Un commerce international transformé.</span>
+    </h1>
+    <p class="sub">COVID-19, guerre Russie–Ukraine : comment deux chocs ont changé la carte des échanges mondiaux.</p>
+  </div>
+
+  <div class="who">
+    Houda Jardak, May Abdallah, Nouhe Jdidi, Talel Laarif, Adam Bhouri<br>
+    INSAT, GL3 — Commerce international — 26 octobre 2026
+  </div>
+  <div class="hint">← → ou espace pour naviguer · F plein écran</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 2 — PLAN
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s2">
+  <div class="kicker">Plan de la présentation</div>
+  <h2>
+    <span class="a">Deux crises.</span>
+    <span class="b">Deux questions.</span>
+  </h2>
+
+  <div class="plan">
+    <div class="plan-grid plan-head">
+      <span></span>
+      <span>(a) Quelles conséquences économiques et sectorielles ?</span>
+      <span>(b) Quelle nouvelle cartographie des échanges ?</span>
+    </div>
+
+    <div class="plan-grid plan-row" data-step="1">
+      <div class="plan-name"><i style="background:var(--gold)"></i>Guerre Russie–Ukraine</div>
+      <p>Une crise de l’énergie, puis une crise du blé.</p>
+      <p>Des flux réorientés vers l’Asie, un monde qui se divise en blocs.</p>
+    </div>
+
+    <div class="plan-grid plan-row" data-step="2">
+      <div class="plan-name"><i style="background:var(--teal)"></i>COVID-19</div>
+      <p>Des pénuries, un commerce qui recule, un PIB en récession.</p>
+      <p>Des relocalisations et des barrières commerciales qui se multiplient.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 3 — CHAPITRE 1 : RUSSIE–UKRAINE
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide dark divider" id="s3">
+  <div class="kicker">01 / Guerre Russie–Ukraine</div>
+  <div class="stack">
+    <h1>
+      <span class="a">Une guerre régionale.</span>
+      <span class="b">Des répercussions mondiales.</span>
+    </h1>
+    <p class="lead">Énergie, blé, routes commerciales : un conflit qui redessine les échanges bien au-delà de l’Europe.</p>
+    <div class="qs">
+      <div><i></i>(a) Conséquences économiques et sectorielles</div>
+      <div><i></i>(b) Nouvelle cartographie des échanges</div>
+    </div>
+  </div>
+
+  <svg class="art" viewBox="0 0 900 900" aria-hidden="true">
+    <circle class="rp" style="--i:0" cx="450" cy="450" r="440" stroke="#E5B551"/>
+    <circle class="rp" style="--i:1" cx="450" cy="450" r="440" stroke="#C45B52"/>
+    <circle class="rp" style="--i:2" cx="450" cy="450" r="440" stroke="#A882FF"/>
+    <circle class="rp" style="--i:3" cx="450" cy="450" r="440" stroke="#E5B551"/>
+    <circle class="rp" style="--i:4" cx="450" cy="450" r="440" stroke="#C45B52"/>
+    <circle cx="450" cy="450" r="16" fill="#E5B551"/>
+  </svg>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 4 — RUSSIE (a) : ÉNERGIE
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s4">
+  <div class="kicker">01 / Russie–Ukraine : l’énergie (a)</div>
+  <h2>
+    <span class="a">L’énergie devient</span>
+    <span class="b">une arme géopolitique.</span>
+  </h2>
+
+  <div class="dg" style="top:430px;height:470px">
+    <div class="grp" data-step="1">
+      <div class="n lav" style="--x:190px;--y:170px;--d:180px">Sanctions</div>
+      <div class="c" style="--x:190px;--y:290px;--w:340px">Les Occidentaux visent le pétrole brut, le pétrole raffiné et le gaz russes.</div>
+    </div>
+
+    <div class="grp" data-step="2">
+      <svg class="ln"><path class="l-v" d="M294 170 L476 170" marker-end="url(#ah-v)"/></svg>
+      <div class="n peach" style="--x:590px;--y:170px;--d:200px">Livraisons réduites</div>
+      <div class="c" style="--x:590px;--y:300px;--w:360px">Le gaz russe n’arrive presque plus en Europe par les gazoducs stratégiques.</div>
+    </div>
+
+    <div class="grp" data-step="3">
+      <svg class="ln"><path class="l-v" d="M704 170 L866 170" marker-end="url(#ah-v)"/></svg>
+      <div class="n gold" style="--x:1000px;--y:170px;--d:240px">Prix en flambée</div>
+      <div class="c" style="--x:1000px;--y:320px;--w:360px">Les coûts de l’énergie atteignent des niveaux historiques.</div>
+    </div>
+
+    <div class="grp" data-step="4">
+      <svg class="ln"><path class="l-c" d="M1134 170 L1296 170" marker-end="url(#ah-c)"/></svg>
+      <div class="n cor" style="--x:1470px;--y:170px;--d:320px;font-size:56px">Inflation</div>
+      <div class="c" style="--x:1470px;--y:360px;--w:420px">Forte pour l’industrie et pour les ménages européens.</div>
+    </div>
+  </div>
+
+  <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>.</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 5 — RUSSIE (a) : ALIMENTATION
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s5">
+  <div class="kicker">01 / Russie–Ukraine : l’alimentation (a)</div>
+  <h2 class="m">
+    <span class="a">Le grenier à blé</span>
+    <span class="b">se bloque.</span>
+  </h2>
+
+  <div style="position:absolute;left:120px;top:440px;width:700px">
+    <div class="note" data-step="2">
+      <h3>Blocus en mer Noire</h3>
+      <p>Les routes maritimes sont fermées : les exportations ukrainiennes de céréales et de tournesol sont paralysées.</p>
+    </div>
+    <div class="note" data-step="3">
+      <h3>Un choc inégal</h3>
+      <p>Les prix alimentaires flambent et frappent d’abord les pays du Sud, très dépendants de ces importations.</p>
+    </div>
+  </div>
+
+  <div data-step="1" style="position:absolute;left:900px;top:120px">
+    <div class="big">≈&nbsp;30<small>&nbsp;%</small></div>
+  </div>
+  <p data-step="1" style="position:absolute;left:1470px;top:150px;width:330px;font:400 24px/1.5 var(--text)">
+    des exportations mondiales de blé venaient de la Russie et de l’Ukraine avant la guerre.
+  </p>
+
+  <div class="dots" data-dots="100" data-hl="30"></div>
+  <div style="position:absolute;left:900px;top:915px;font:400 16px/1 var(--ui);color:var(--muted)">1 point = 1&nbsp;% des exportations mondiales de blé</div>
+
+  <div data-step="3" style="position:absolute;left:1490px;top:395px;width:330px">
+    <div style="font:italic 600 42px/1.1 var(--display);margin-bottom:22px;color:var(--coral)">Les plus exposés</div>
+    <div class="country"><i></i>Égypte</div>
+    <div class="country"><i></i>Tunisie</div>
+    <div class="country"><i></i>Maroc</div>
+    <div class="country"><i></i>Afrique subsaharienne</div>
+  </div>
+
+  <div class="src" style="left:900px">Source : ARTE, <em>Le dessous des cartes</em> (part approximative citée dans la vidéo).</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 6 — RUSSIE (b) : FLUX ÉNERGÉTIQUES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s6">
+  <div class="kicker">01 / Russie–Ukraine : les flux (b)</div>
+  <h2 class="m">
+    <span class="a">Les flux d’énergie</span>
+    <span class="b">changent de cap.</span>
+  </h2>
+
+  <div class="dg" style="top:370px;height:560px">
+    <!-- Toujours visibles : Europe et Russie -->
+    <div class="n vio" style="--x:640px;--y:250px;--d:230px;font-size:54px">Europe</div>
+    <div class="n aub" style="--x:1080px;--y:250px;--d:210px;font-size:50px">Russie</div>
+
+    <!-- Étape 1 : le gaz par gazoduc est réduit -->
+    <div class="grp" data-step="1">
+      <svg class="ln">
+        <path class="l-c" stroke-dasharray="8 10" d="M950 250 L896 250"/>
+        <path class="l-c" stroke-dasharray="8 10" d="M834 250 L782 250" marker-end="url(#ah-c)"/>
+        <path class="l-c" d="M876 226 L856 274 M892 226 L872 274"/>
+      </svg>
+      <div class="c ui" style="--x:865px;--y:168px;--w:230px;color:var(--coral)">Gazoducs : livraisons<br>fortement réduites</div>
+    </div>
+
+    <!-- Étape 2 : pivot vers l’Asie -->
+    <div class="grp" data-step="2">
+      <svg class="ln">
+        <path class="l-g flow" d="M1190 200 C 1300 140, 1380 100, 1478 92" marker-end="url(#ah-g)"/>
+        <path class="l-g flow" d="M1197 250 L1473 250" marker-end="url(#ah-g)"/>
+        <path class="l-g flow" d="M1190 300 C 1300 360, 1380 400, 1478 408" marker-end="url(#ah-g)"/>
+      </svg>
+      <div class="n gold" style="--x:1560px;--y:90px;--d:150px;font-size:32px">Chine</div>
+      <div class="n gold" style="--x:1560px;--y:250px;--d:150px;font-size:32px">Inde</div>
+      <div class="n gold" style="--x:1560px;--y:410px;--d:150px;font-size:32px">Turquie</div>
+      <div class="c ui" style="--x:1335px;--y:266px;--w:200px">à prix réduit</div>
+      <div class="c it" style="--x:1500px;--y:506px;--w:400px">Pivot vers l’Asie</div>
+    </div>
+
+    <!-- Étape 3 : le GNL remplace le gaz russe -->
+    <div class="grp" data-step="3">
+      <svg class="ln">
+        <path class="l-t flow" d="M225 90 C 380 90, 450 150, 522 204" marker-end="url(#ah-t)"/>
+        <path class="l-t flow" d="M225 250 L513 250" marker-end="url(#ah-t)"/>
+        <path class="l-t flow" d="M225 410 C 380 410, 450 350, 522 296" marker-end="url(#ah-t)"/>
+      </svg>
+      <div class="n mint" style="--x:150px;--y:90px;--d:150px;font-size:30px">États-Unis</div>
+      <div class="n mint" style="--x:150px;--y:250px;--d:150px;font-size:32px">Qatar</div>
+      <div class="n mint" style="--x:150px;--y:410px;--d:150px;font-size:32px">Norvège</div>
+      <div class="c ui" style="--x:370px;--y:268px;--w:240px">GNL par méthanier</div>
+      <div class="c it" style="--x:150px;--y:506px;--w:400px">Nouveaux fournisseurs</div>
+    </div>
+  </div>
+
+  <div class="src">Schéma conceptuel, pas une carte. Source : ARTE, <em>Le dessous des cartes</em>.</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 7 — RUSSIE (b) : BLOCS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s7">
+  <div class="kicker">01 / Russie–Ukraine : la fragmentation (b)</div>
+  <h2 class="m">
+    <span class="a">Le monde s’organise</span>
+    <span class="b">en blocs.</span>
+  </h2>
+
+  <div class="vline"></div>
+
+  <div class="cols">
+    <div class="col" style="left:0" data-step="1">
+      <h3>Nearshoring et autonomie</h3>
+      <svg viewBox="0 0 560 300" aria-hidden="true">
+        <circle cx="280" cy="150" r="148" fill="none" stroke="#A882FF" stroke-width="2" stroke-dasharray="4 8"/>
+        <g stroke="#0B776E" stroke-width="3">
+          <line x1="280" y1="150" x2="280" y2="34"/>
+          <line x1="280" y1="150" x2="391" y2="115"/>
+          <line x1="280" y1="150" x2="349" y2="244"/>
+          <line x1="280" y1="150" x2="211" y2="244"/>
+          <line x1="280" y1="150" x2="169" y2="115"/>
+        </g>
+        <g fill="#DDF4EE" stroke="#0B776E" stroke-width="3">
+          <circle cx="280" cy="34" r="26"/><circle cx="391" cy="115" r="26"/>
+          <circle cx="349" cy="244" r="26"/><circle cx="211" cy="244" r="26"/><circle cx="169" cy="115" r="26"/>
+        </g>
+        <circle cx="280" cy="150" r="52" fill="#7852EE"/>
+        <text x="280" y="160" text-anchor="middle" fill="#fff" style="font:600 30px var(--display)">Pays</text>
+      </svg>
+      <p>Relocaliser ou rapatrier les approvisionnements stratégiques chez des pays alliés, pour ne plus dépendre d’un seul partenaire.</p>
+    </div>
+
+    <div class="col" style="left:900px" data-step="2">
+      <h3>BRICS+ et dédollarisation</h3>
+      <svg viewBox="0 0 560 300" aria-hidden="true">
+        <circle cx="280" cy="150" r="48" fill="none" stroke="#6B6480" stroke-width="2" stroke-dasharray="5 7" opacity=".7"/>
+        <text x="280" y="162" text-anchor="middle" fill="#6B6480" opacity=".8" style="font:600 36px var(--ui)">$</text>
+        <g stroke="#7852EE" stroke-width="3">
+          <line x1="280" y1="46" x2="388" y2="224"/>
+          <line x1="388" y1="224" x2="172" y2="224"/>
+          <line x1="172" y1="224" x2="280" y2="46"/>
+        </g>
+        <g fill="#E8E1F8" stroke="#7852EE" stroke-width="3">
+          <circle cx="280" cy="46" r="38"/><circle cx="388" cy="224" r="38"/><circle cx="172" cy="224" r="38"/>
+        </g>
+        <g fill="#5A38C8" text-anchor="middle" class="sym">
+          <text x="280" y="57">¥</text><text x="388" y="235">₽</text><text x="172" y="235">₹</text>
+        </g>
+        <text x="280" y="290" text-anchor="middle" fill="#6B6480" style="font:italic 400 19px var(--ui)">yuan · rouble · roupie : le dollar contourné</text>
+      </svg>
+      <p>L’axe Chine–Russie–Moyen-Orient se renforce et accueille de nouveaux membres. Objectif : régler les échanges en monnaies nationales.</p>
+    </div>
+  </div>
+
+  <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>.</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 8 — CHAPITRE 2 : COVID-19
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide dark divider" id="s8">
+  <div class="kicker">02 / COVID-19</div>
+  <div class="stack">
+    <h1>
+      <span class="a">Quand le monde s’arrête,</span>
+      <span class="b">les échanges ralentissent.</span>
+    </h1>
+    <p class="lead">Le virus apparaît à Wuhan en novembre 2019. Il frappe un commerce mondial multiplié par 60 depuis les années 1970.</p>
+    <div class="qs">
+      <div><i style="background:var(--lilac)"></i>(a) Conséquences économiques et sectorielles</div>
+      <div><i style="background:var(--lilac)"></i>(b) Nouvelle cartographie des échanges</div>
+    </div>
+  </div>
+  <svg class="art" id="ring" viewBox="0 0 900 900" aria-hidden="true"></svg>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 9 — COVID (a) : PÉNURIES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s9">
+  <div class="kicker">02 / COVID-19 : les pénuries (a)</div>
+  <h2 class="m">
+    <span class="a">Une dépendance à la Chine</span>
+    <span class="b">mise à nu.</span>
+  </h2>
+
+  <div class="dg" style="top:380px;height:570px">
+    <!-- Ligne 1 -->
+    <div class="grp" data-step="1">
+      <div class="c it" style="--x:180px;--y:70px;--w:340px;text-align:left;transform:translateX(-50%);line-height:1.1">Produits de première nécessité</div>
+      <svg class="ln">
+        <path class="l-v" d="M609 110 L871 110" marker-end="url(#ah-v)"/>
+        <path class="l-c" d="M1049 110 L1311 110" marker-end="url(#ah-c)"/>
+      </svg>
+      <div class="n mint" style="--x:520px;--y:110px;--d:150px">Chine</div>
+      <div class="n peach" style="--x:960px;--y:110px;--d:150px">Blocage</div>
+      <div class="n aub" style="--x:1400px;--y:110px;--d:150px">États</div>
+      <div class="c" style="--x:520px;--y:209px;--w:420px">Principal fournisseur de produits de première nécessité.</div>
+      <div class="c" style="--x:960px;--y:209px;--w:420px">Frontières fermées : les échanges mondiaux se bloquent.</div>
+      <div class="c" style="--x:1400px;--y:209px;--w:420px">Course aux masques et au paracétamol entre États.</div>
+    </div>
+
+    <!-- Ligne 2 -->
+    <div class="grp" data-step="2">
+      <div class="c it" style="--x:180px;--y:360px;--w:340px;text-align:left;transform:translateX(-50%);line-height:1.1">Composants à haute valeur ajoutée</div>
+      <svg class="ln">
+        <path class="l-v" d="M609 400 L871 400" marker-end="url(#ah-v)"/>
+        <path class="l-c" d="M1049 400 L1311 400" marker-end="url(#ah-c)"/>
+      </svg>
+      <div class="n mint" style="--x:520px;--y:400px;--d:150px">Usines</div>
+      <div class="n peach" style="--x:960px;--y:400px;--d:150px">Fermées</div>
+      <div class="n aub" style="--x:1400px;--y:400px;--d:150px">Airbus</div>
+      <div class="c" style="--x:520px;--y:499px;--w:420px">À Shenzhen et Shanghai, on fabrique des pièces uniques.</div>
+      <div class="c" style="--x:960px;--y:499px;--w:420px">Les usines ferment : les chaînes se grippent.</div>
+      <div class="c" style="--x:1400px;--y:499px;--w:420px">Faute de gouvernails, Airbus se retrouve en difficulté.</div>
+    </div>
+  </div>
+
+  <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations ».</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 10 — COVID (a) : CHUTE DU COMMERCE ET DU PIB
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="kicker">02 / COVID-19 : le commerce et la croissance (a)</div>
+  <h2 class="m">
+    <span class="a">−7&nbsp;% en moyenne.</span>
+    <span class="b">Jusqu’à −26&nbsp;% en Afrique du Nord.</span>
+  </h2>
+
+  <div class="chart1" data-step="1">
+    <div class="ct">Variation des échanges de marchandises entre 2018 et 2020, en %</div>
+    <div class="crow"><span class="rl">Afrique du Nord</span><span class="track"><i class="bar" style="--w:26;--k:0"></i><b>−26&nbsp;%</b></span></div>
+    <div class="crow"><span class="rl">Asie de l’Ouest</span><span class="track"><i class="bar" style="--w:20;--k:1"></i><b>−20&nbsp;%</b></span></div>
+    <div class="crow"><span class="rl">Afrique, ensemble du continent</span><span class="track"><i class="bar" style="--w:14;--k:2"></i><b>−14&nbsp;%</b></span></div>
+    <div class="crow"><span class="rl">Amériques, Europe, Océanie</span><span class="track"><i class="bar t" style="--w:7;--k:3"></i><b>−7&nbsp;%</b><em>atténué par de massifs plans de soutien</em></span></div>
+    <div class="avg"></div>
+    <div class="avg-l">moyenne mondiale : −7&nbsp;%</div>
+  </div>
+
+  <div class="chart2" data-step="2">
+    <div class="ct">Croissance du PIB mondial, en %</div>
+    <svg viewBox="0 0 540 450" aria-label="Croissance du PIB mondial : -3 % en 2020, +6 % en 2021, 3,1 % en 2022, environ 3 % prévu en 2023">
+      <line x1="0" y1="250" x2="540" y2="250" stroke="#211A35" stroke-opacity=".35" stroke-width="1.5"/>
+      <rect x="30"  y="250" width="90" height="90"  fill="#C45B52"/>
+      <rect x="160" y="70"  width="90" height="180" fill="#0B776E"/>
+      <rect x="290" y="157" width="90" height="93"  fill="#A882FF"/>
+      <rect x="420" y="160" width="90" height="90"  fill="none" stroke="#7852EE" stroke-width="3" stroke-dasharray="7 7"/>
+      <g style="font:600 36px var(--display)" text-anchor="middle" fill="#211A35">
+        <text x="75"  y="378">−3</text>
+        <text x="205" y="56">+6</text>
+        <text x="335" y="143">3,1</text>
+        <text x="465" y="146">≈ 3</text>
+      </g>
+      <g style="font:500 19px var(--ui)" text-anchor="middle" fill="#6B6480">
+        <text x="75"  y="422">2020</text>
+        <text x="205" y="422">2021</text>
+        <text x="335" y="422">2022</text>
+        <text x="465" y="422">2023</text>
+        <text x="465" y="445" style="font-style:italic">prévision</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="src">Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations » (chiffres cités dans la vidéo).</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 11 — COVID (b) : RELOCALISATIONS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s11">
+  <div class="kicker">02 / COVID-19 : les relocalisations (b)</div>
+  <h2>
+    <span class="a">Produire plus près.</span>
+    <span class="b">Dépendre moins.</span>
+  </h2>
+
+  <p class="lead" style="position:absolute;left:120px;top:400px;font-size:25px;width:660px">
+    La pandémie a révélé des failles dans la santé : les États repensent leur souveraineté industrielle.
+  </p>
+
+  <div data-step="1" style="position:absolute;left:120px;top:545px">
+    <div class="big" style="color:var(--violet)">52<small>&nbsp;Md$</small></div>
+    <p style="font:400 25px/1.5 var(--text);width:640px;margin-top:20px">
+      sur 10 ans : le plan de l’administration Biden pour rapatrier la fabrication de semi-conducteurs et réduire la dépendance envers Taïwan.
+    </p>
+  </div>
+
+  <div class="dg" style="left:900px;top:380px;width:900px;height:560px">
+    <div class="grp" data-step="2">
+      <svg class="ln">
+        <path class="l-c" d="M215 150 C 380 80, 480 52, 621 52" marker-end="url(#ah-c)"/>
+        <path class="l-c" d="M229 200 L621 200" marker-end="url(#ah-c)"/>
+        <path class="l-c" d="M215 250 C 380 320, 480 348, 621 348" marker-end="url(#ah-c)"/>
+      </svg>
+      <div class="n peach" style="--x:130px;--y:200px;--d:170px;font-size:40px">Chine</div>
+      <div class="n mint" style="--x:700px;--y:52px;--d:130px;font-size:30px">Inde</div>
+      <div class="n mint" style="--x:700px;--y:200px;--d:130px;font-size:30px">Vietnam</div>
+      <div class="n mint" style="--x:700px;--y:348px;--d:130px;font-size:30px">Brésil</div>
+      <div class="c it" style="--x:420px;--y:148px;--w:160px">Apple</div>
+      <div class="c" style="--x:450px;--y:440px;--w:860px;font-size:23px">Des géants comme Apple sortent leur production de Chine.</div>
+    </div>
+
+    <div class="grp" data-step="3">
+      <div class="c" style="--x:450px;--y:492px;--w:820px;font-size:23px;color:var(--teal);font-weight:700">En Europe, la course aux « giga-usines » de composants électroniques et de batteries est lancée.</div>
+    </div>
+  </div>
+
+  <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations ».</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 12 — COVID (b) : BARRIÈRES ET DÉCOUPLAGE
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s12">
+  <div class="kicker">02 / COVID-19 : la fragmentation (b)</div>
+  <h2 class="m">
+    <span class="a">Des barrières qui triplent.</span>
+    <span class="b">Un monde qui se scinde ?</span>
+  </h2>
+
+  <div data-step="1" style="position:absolute;left:120px;top:395px">
+    <div class="big" style="color:var(--coral);font-size:210px">×3</div>
+    <p style="font:400 25px/1.5 var(--text);width:700px;margin-top:14px">Selon le FMI, les barrières commerciales ont triplé depuis 2019.</p>
+  </div>
+
+  <p data-step="2" style="position:absolute;left:120px;top:770px;width:720px;font:400 24px/1.55 var(--text)">
+    L’OMC met en garde contre un <span class="hl-c">découplage</span> : deux blocs autonomes, où l’on ne commerce qu’entre pays partageant les mêmes valeurs.
+  </p>
+
+  <div data-step="1" style="position:absolute;left:940px;top:400px;width:860px;height:560px">
+    <svg id="g12" viewBox="0 0 860 540" style="width:860px;height:540px;display:block" aria-label="Schéma conceptuel : un réseau commercial unique se sépare en deux blocs"></svg>
+    <div style="position:absolute;left:0;right:0;bottom:-6px;text-align:center;font:italic 400 17px/1 var(--ui);color:var(--muted)">Schéma conceptuel. Pointillés : échanges entre les deux blocs.</div>
+  </div>
+
+  <div class="src" style="right:auto">Source : ARTE, <em>Le dessous des cartes</em> (FMI, OMC cités dans la vidéo).</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 13 — SYNTHÈSE
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide dark" id="s13">
+  <canvas class="globe" width="1400" height="1400" style="left:1180px;top:-190px;width:780px;height:780px;opacity:.55"></canvas>
+  <div class="kicker">Ce qu’il faut retenir</div>
+  <h2 class="m">
+    <span class="a">Des dépendances révélées.</span>
+    <span class="b">Un commerce recomposé.</span>
+  </h2>
+
+  <div style="position:absolute;left:120px;right:120px;top:520px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:80px">
+    <div data-step="1" style="border-top:3px solid var(--coral);padding-top:26px">
+      <h3 style="font:600 58px/1.05 var(--display);margin-bottom:20px">Des dépendances</h3>
+      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">Gaz russe, blé de la mer Noire, composants chinois : une dépendance devient vite un choc.</p>
+    </div>
+    <div data-step="2" style="border-top:3px solid #9ADCC9;padding-top:26px">
+      <h3 style="font:600 58px/1.05 var(--display);margin-bottom:20px">Des flux réorientés</h3>
+      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">Hydrocarbures russes vers l’Asie, GNL vers l’Europe, production déplacée vers l’Inde et le Vietnam.</p>
+    </div>
+    <div data-step="3" style="border-top:3px solid var(--gold);padding-top:26px">
+      <h3 style="font:600 58px/1.05 var(--display);margin-bottom:20px">Des blocs qui se dessinent</h3>
+      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">BRICS+, dédollarisation, barrières triplées : l’OMC redoute un découplage en deux blocs.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 14 — MERCI + SOURCES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s14">
+  <div class="kicker">Fin de la présentation</div>
+  <h2>
+    <span class="a">Merci.</span>
+    <span class="b">Place à vos questions.</span>
+  </h2>
+
+  <div style="position:absolute;left:120px;top:560px;font:500 20px/1.8 var(--ui);color:var(--muted)">
+    Houda Jardak, May Abdallah, Nouhe Jdidi, Talel Laarif, Adam Bhouri<br>
+    INSAT, GL3 — Commerce international — 26 octobre 2026
+  </div>
+
+  <div style="position:absolute;left:1060px;top:440px;width:740px">
+    <div style="font:italic 600 46px/1 var(--display);margin-bottom:26px;color:var(--violet-ink)">Sources</div>
+    <p style="font:400 24px/1.55 var(--text);margin-bottom:30px">
+      ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations » (COVID-19).<br>
+      <a href="https://www.youtube.com/watch?v=cdhLD0onUNw" target="_blank" rel="noopener" style="font:400 18px var(--ui);color:var(--violet-ink)">youtube.com/watch?v=cdhLD0onUNw</a>
+    </p>
+    <p style="font:400 24px/1.55 var(--text)">
+      ARTE, <em>Le dessous des cartes</em>, vidéo sur la guerre Russie–Ukraine et le commerce international.
+    </p>
+  </div>
+</section>
+
+<div class="prog" id="prog"></div>
+</main>
+
+<button class="navbtn" id="prev" aria-label="Précédent">←</button>
+<button class="navbtn" id="next" aria-label="Suivant">→</button>
+
+<script>
+/* ═════════════ Mise à l’échelle de la scène ═════════════ */
+const stage = document.getElementById('stage');
+function fit(){
+  const s = Math.min(innerWidth/1920, innerHeight/1080);
+  stage.style.setProperty('--s', s);
+}
+addEventListener('resize', fit); fit();
+
+/* ═════════════ Pieds de page ═════════════ */
+const slides = [...document.querySelectorAll('.slide')];
+const total = slides.length;
+slides.forEach((s,i)=>{
+  if(s.hasAttribute('data-nofoot')) return;
+  const f = document.createElement('div');
+  f.className = 'foot';
+  f.innerHTML = '<span>Commerce international</span><span class="pg">'
+    + String(i+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0') + '</span>';
+  s.appendChild(f);
+});
+
+/* ═════════════ Navigation + étapes ═════════════ */
+let cur = 0;
+const maxStep = s => Math.max(0, ...[...s.querySelectorAll('[data-step]')].map(e=>+e.dataset.step));
+slides.forEach(s=>{ s._max = maxStep(s); s._step = 0; });
+
+function setStep(s, n){
+  s._step = n;
+  s.querySelectorAll('[data-step]').forEach(e=>e.classList.toggle('on', +e.dataset.step <= n));
+  for(let k=1;k<=s._max;k++) s.classList.toggle('st-'+k, k<=n);
+  s.dispatchEvent(new CustomEvent('step',{detail:n}));
+}
+function go(i, mode){
+  slides[cur].classList.remove('active');
+  cur = i;
+  slides[cur].classList.add('active');
+  setStep(slides[cur], mode==='end' ? slides[cur]._max : 0);
+  document.getElementById('prog').style.width = (cur/(total-1)*100)+'%';
+  history.replaceState(null,'','#'+(cur+1));
+}
+function next(){
+  const s = slides[cur];
+  if(s._step < s._max) setStep(s, s._step+1);
+  else if(cur < total-1) go(cur+1,'start');
+}
+function prev(){
+  const s = slides[cur];
+  if(s._step > 0) setStep(s, s._step-1);
+  else if(cur > 0) go(cur-1,'end');
+}
+addEventListener('keydown', e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
+  switch(e.key){
+    case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ': case 'Enter':
+      e.preventDefault(); next(); break;
+    case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace':
+      e.preventDefault(); prev(); break;
+    case 'Home': go(0,'start'); break;
+    case 'End': go(total-1,'end'); break;
+    case 'f': case 'F':
+      if(!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+      break;
+  }
+});
+document.getElementById('next').onclick = next;
+document.getElementById('prev').onclick = prev;
+let tx=null;
+addEventListener('touchstart', e=>{ tx = e.touches[0].clientX; }, {passive:true});
+addEventListener('touchend', e=>{
+  if(tx===null) return;
+  const dx = e.changedTouches[0].clientX - tx;
+  if(Math.abs(dx) > 50) (dx<0 ? next : prev)();
+  tx = null;
+});
+let mv;
+addEventListener('mousemove', ()=>{
+  document.body.classList.add('moving'); clearTimeout(mv);
+  mv = setTimeout(()=>document.body.classList.remove('moving'), 2200);
+});
+
+/* ═════════════ Globe en réseau (intro + synthèse) ═════════════ */
+function initGlobe(cv){
+  const ctx = cv.getContext('2d'), W = cv.width, H = cv.height, R = W*0.4;
+  const N = 170, ga = Math.PI*(3-Math.sqrt(5));
+  const pts = [];
+  for(let i=0;i<N;i++){
+    const y = 1 - (i/(N-1))*2, r = Math.sqrt(1-y*y), th = ga*i;
+    const k = i % 11;
+    pts.push({x:Math.cos(th)*r, y, z:Math.sin(th)*r,
+      c: k===0 ? '#9ADCC9' : (k===5 ? '#E5B551' : '#A882FF'), big: k===0||k===5});
+  }
+  const edges = [];
+  for(let i=0;i<N;i++) for(let j=i+1;j<N;j++){
+    const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, dz=pts[i].z-pts[j].z;
+    if(dx*dx+dy*dy+dz*dz < 0.36*0.36) edges.push([i,j]);
+  }
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let a = 0.6; const tilt = 0.38;
+  const slide = cv.closest('.slide');
+  function frame(){
+    requestAnimationFrame(frame);
+    if(!slide.classList.contains('active')) return;
+    if(!still) a += 0.0022;
+    const ca=Math.cos(a), sa=Math.sin(a), ct=Math.cos(tilt), st=Math.sin(tilt);
+    const P = pts.map(p=>{
+      const x1 = p.x*ca + p.z*sa, z1 = -p.x*sa + p.z*ca;
+      const y2 = p.y*ct - z1*st, z2 = p.y*st + z1*ct;
+      return {sx:W/2 + x1*R, sy:H/2 + y2*R, d:(z2+1)/2};
+    });
+    ctx.clearRect(0,0,W,H);
+    // halo
+    const g = ctx.createRadialGradient(W/2,H/2,R*0.6,W/2,H/2,R*1.15);
+    g.addColorStop(0,'rgba(120,82,238,0)'); g.addColorStop(.85,'rgba(120,82,238,.12)'); g.addColorStop(1,'rgba(120,82,238,0)');
+    ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+    ctx.lineWidth = 2;
+    for(const [i,j] of edges){
+      const d = (P[i].d + P[j].d)/2;
+      ctx.strokeStyle = 'rgba(168,130,255,'+(0.06 + 0.42*d*d)+')';
+      ctx.beginPath(); ctx.moveTo(P[i].sx,P[i].sy); ctx.lineTo(P[j].sx,P[j].sy); ctx.stroke();
+    }
+    for(let i=0;i<N;i++){
+      const p = pts[i], q = P[i], al = 0.2 + 0.8*q.d;
+      const r = (p.big ? 7 : 4.5) * (0.6 + 0.8*q.d);
+      if(p.big){
+        ctx.globalAlpha = al*0.25; ctx.fillStyle = p.c;
+        ctx.beginPath(); ctx.arc(q.sx,q.sy,r*2.6,0,6.283); ctx.fill();
+      }
+      ctx.globalAlpha = al; ctx.fillStyle = p.c;
+      ctx.beginPath(); ctx.arc(q.sx,q.sy,r,0,6.283); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  frame();
+}
+document.querySelectorAll('canvas.globe').forEach(initGlobe);
+
+/* ═════════════ Grille de points (blé) ═════════════ */
+document.querySelectorAll('[data-dots]').forEach(el=>{
+  const n = +el.dataset.dots, hl = +el.dataset.hl;
+  for(let i=0;i<n;i++){
+    const d = document.createElement('span');
+    d.className = 'd' + (i<hl ? ' g' : '');
+    d.style.setProperty('--k', i);
+    el.appendChild(d);
+  }
+});
+
+/* ═════════════ Anneau de nœuds (chapitre COVID) ═════════════ */
+(function(){
+  const svg = document.getElementById('ring'), N=30, R=330, c=450;
+  const P = Array.from({length:N},(_,i)=>{
+    const a = i/N*2*Math.PI - Math.PI/2;
+    return [c+R*Math.cos(a), c+R*Math.sin(a)];
+  });
+  let h = '<g class="ring-lines">';
+  for(let i=0;i<N;i++) for(const k of [1,7,11]){
+    const j=(i+k)%N;
+    h += `<line x1="${P[i][0].toFixed(1)}" y1="${P[i][1].toFixed(1)}" x2="${P[j][0].toFixed(1)}" y2="${P[j][1].toFixed(1)}"/>`;
+  }
+  h += '</g>';
+  P.forEach((p,i)=>{
+    h += `<circle class="rn${i%5===0?' m':''}" style="--i:${i}" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${i%5===0?13:9}"/>`;
+  });
+  svg.innerHTML = h;
+})();
+
+/* ═════════════ Réseau qui se scinde en deux blocs (diapo 12) ═════════════ */
+(function(){
+  const svg = document.getElementById('g12'), NS='http://www.w3.org/2000/svg';
+  let seed = 11; const rnd = ()=> (seed = seed*16807 % 2147483647)/2147483647;
+  const CX=430, CY=270, RX=230, RY=205, SHIFT=190, N=46;
+  const nodes=[];
+  while(nodes.length<N){
+    const x=rnd()*2-1, y=rnd()*2-1;
+    if(x*x+y*y>1) continue;
+    nodes.push({x:CX+x*RX, y:CY+y*RY, r:6+rnd()*7});
+  }
+  nodes.forEach(n=> n.g = n.x < CX ? 0 : 1);
+  const set = new Set(), edges=[];
+  nodes.forEach((a,i)=>{
+    nodes.map((b,j)=>({j,d:(a.x-b.x)**2+(a.y-b.y)**2}))
+      .filter(o=>o.j!==i).sort((p,q)=>p.d-q.d).slice(0,3)
+      .forEach(o=>{
+        const key = i<o.j ? i+'-'+o.j : o.j+'-'+i;
+        if(!set.has(key)){ set.add(key); edges.push([i,o.j]); }
+      });
+  });
+  const els = edges.map(([i,j])=>{
+    const l = document.createElementNS(NS,'line'), cross = nodes[i].g!==nodes[j].g;
+    if(cross){ l.setAttribute('stroke','#C45B52'); l.setAttribute('stroke-width','2.5'); l.setAttribute('stroke-dasharray','6 6'); }
+    else { l.setAttribute('stroke','#A882FF'); l.setAttribute('stroke-width','2'); l.setAttribute('stroke-opacity','.55'); }
+    svg.appendChild(l); return {l,i,j,cross};
+  });
+  const cs = nodes.map(n=>{
+    const c = document.createElementNS(NS,'circle');
+    c.setAttribute('r', n.r); c.setAttribute('fill', n.g ? '#0B776E' : '#7852EE');
+    svg.appendChild(c); return c;
+  });
+  let t=0, target=0, raf;
+  const ease = x => x*x*(3-2*x);
+  function render(){
+    const e = ease(t);
+    const px = n => n.x + (n.g ? SHIFT : -SHIFT)*e;
+    els.forEach(o=>{
+      const a=nodes[o.i], b=nodes[o.j];
+      o.l.setAttribute('x1',px(a)); o.l.setAttribute('y1',a.y);
+      o.l.setAttribute('x2',px(b)); o.l.setAttribute('y2',b.y);
+      if(o.cross) o.l.setAttribute('stroke-opacity', (0.85*(1-e)).toFixed(3));
+    });
+    nodes.forEach((n,k)=>{ cs[k].setAttribute('cx',px(n)); cs[k].setAttribute('cy',n.y); });
+  }
+  function tick(){
+    const d = target - t;
+    t += Math.sign(d)*Math.min(Math.abs(d), 0.012);
+    render();
+    if(t !== target) raf = requestAnimationFrame(tick);
+  }
+  render();
+  document.getElementById('s12').addEventListener('step', e=>{
+    target = e.detail >= 2 ? 1 : 0;
+    cancelAnimationFrame(raf); tick();
+  });
+})();
+
+/* ═════════════ Démarrage (support de #numéro dans l’URL) ═════════════ */
+const start = Math.min(Math.max((parseInt(location.hash.slice(1))||1)-1,0), total-1);
+cur = start;
+slides[cur].classList.add('active');
+setStep(slides[cur], 0);
+document.getElementById('prog').style.width = (cur/(total-1)*100)+'%';
+</script>
+</body>
+</html>
