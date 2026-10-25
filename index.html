@@ -13,7 +13,7 @@
 ║    par un commentaire  « DIAPO n ».  Tout le texte est du HTML      ║
 ║    normal : ouvrez le fichier dans un éditeur, changez le texte.     ║
 ║  • Titres : <span class="a"> = 1re partie (encre),                   ║
-║             <span class="b"> = 2e partie (violet, italique).         ║
+║             <span class="b"> = 2e partie (bleu, italique)  .         ║
 ║  • data-step="1", "2"… = élément qui apparaît à la Nième pression    ║
 ║    de la flèche → avant de passer à la diapo suivante.               ║
 ║  • Couleurs : variables CSS juste en dessous (:root).                ║
@@ -30,20 +30,20 @@
 
 <style>
 :root{
-  /* Palette (inspirée de la charte Obsidian) */
-  --aubergine:#211A35;   /* fonds sombres */
+  /* Palette marine (bleu nuit + cobalt) */
+  --navy:#13233F;   /* fonds sombres */
   --ivory:#FAF8F3;       /* fond principal */
-  --violet:#7852EE;      /* accent principal */
-  --violet-ink:#5A38C8;  /* violet foncé pour petits textes */
-  --lilac:#A882FF;
-  --lavender:#E8E1F8;
+  --accent:#2563C9;      /* accent principal */
+  --accent-ink:#1C4C9E;  /* bleu foncé pour petits textes */
+  --sky:#7FA8E8;
+  --mist:#DFE8F6;
   --mint:#DDF4EE;        /* adaptation, reprise */
   --teal:#0B776E;        /* données, résilience */
   --coral:#C45B52;       /* chocs, inflation, risques */
   --peach:#F6E1D6;
   --gold:#E5B551;        /* énergie, blé, ressources */
-  --ink:#211A35;
-  --muted:#6B6480;
+  --ink:#13233F;
+  --muted:#5E6878;
 
   /* Typographie */
   --display:'Cormorant Garamond','EB Garamond',Georgia,serif;
@@ -52,7 +52,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:#0e0a18;overflow:hidden}
+html,body{height:100%;background:#0a1220;overflow:hidden}
 body{font-family:var(--text);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
 /* ───────── Scène 1920×1080 mise à l’échelle ───────── */
@@ -68,23 +68,23 @@ body{font-family:var(--text);color:var(--ink);-webkit-font-smoothing:antialiased
   background:var(--ivory);color:var(--ink);
 }
 .slide.active{opacity:1;visibility:visible;transition:opacity .6s ease}
-.slide.dark{background:var(--aubergine);color:var(--ivory)}
+.slide.dark{background:var(--navy);color:var(--ivory)}
 
 /* ───────── Titres ───────── */
 .kicker{
   font:600 18px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;
-  color:var(--violet-ink);margin-bottom:30px;
+  color:var(--accent-ink);margin-bottom:30px;
 }
-.dark .kicker{color:var(--lilac)}
+.dark .kicker{color:var(--sky)}
 h1,h2{font-family:var(--display);font-weight:600;letter-spacing:-.012em;line-height:1.02}
 h2{font-size:104px}
 h2.m{font-size:88px}
 h1{font-size:112px}
 h1 .a,h1 .b,h2 .a,h2 .b{display:block}
 h1 .a,h2 .a{color:var(--ink)}
-h1 .b,h2 .b{font-style:italic;color:var(--violet);font-size:1.05em}
+h1 .b,h2 .b{font-style:italic;color:var(--accent);font-size:1.05em}
 .dark h1 .a,.dark h2 .a{color:var(--ivory)}
-.dark h1 .b,.dark h2 .b{color:var(--lilac)}
+.dark h1 .b,.dark h2 .b{color:var(--sky)}
 
 /* révélation des titres, une seule fois à l’arrivée sur la diapo */
 @keyframes wipe{
@@ -100,7 +100,7 @@ h1 .b,h2 .b{font-style:italic;color:var(--violet);font-size:1.05em}
 .note h3{font:600 40px/1.1 var(--display);margin-bottom:10px}
 .note p{font:400 25px/1.55 var(--text);max-width:700px}
 .note{margin-bottom:36px}
-.hl-v{color:var(--violet-ink);font-weight:700}
+.hl-v{color:var(--accent-ink);font-weight:700}
 .hl-t{color:var(--teal);font-weight:700}
 .hl-c{color:var(--coral);font-weight:700}
 .src{
@@ -114,12 +114,12 @@ h1 .b,h2 .b{font-style:italic;color:var(--violet);font-size:1.05em}
   position:absolute;left:120px;right:120px;bottom:38px;
   display:flex;justify-content:space-between;
   font:500 16px/1 var(--ui);letter-spacing:.08em;color:var(--muted);
-  border-top:1px solid rgba(33,26,53,.14);padding-top:16px;
+  border-top:1px solid rgba(19,35,63,.14);padding-top:16px;
 }
 .dark .foot{color:rgba(250,248,243,.55);border-color:rgba(250,248,243,.16)}
-.foot .pg{color:var(--violet-ink);font-weight:600}
-.dark .foot .pg{color:var(--lilac)}
-.prog{position:absolute;left:0;bottom:0;height:4px;background:var(--violet);width:0;transition:width .5s ease;z-index:5}
+.foot .pg{color:var(--accent-ink);font-weight:600}
+.dark .foot .pg{color:var(--sky)}
+.prog{position:absolute;left:0;bottom:0;height:4px;background:var(--accent);width:0;transition:width .5s ease;z-index:5}
 
 /* ───────── Étapes (apparitions au clic) ───────── */
 [data-step]{opacity:0;transition:opacity .8s ease}
@@ -134,11 +134,11 @@ h1 .b,h2 .b{font-style:italic;color:var(--violet);font-size:1.05em}
   display:grid;place-items:center;text-align:center;padding:14px;
   font:600 34px/1.05 var(--display);
 }
-.n.lav{background:var(--lavender);color:var(--violet-ink)}
+.n.lav{background:var(--mist);color:var(--accent-ink)}
 .n.mint{background:var(--mint);color:var(--teal)}
 .n.peach{background:var(--peach);color:#963C34}
-.n.aub{background:var(--aubergine);color:var(--ivory)}
-.n.vio{background:var(--violet);color:#fff}
+.n.aub{background:var(--navy);color:var(--ivory)}
+.n.vio{background:var(--accent);color:#fff}
 .n.gold{background:var(--gold);color:var(--ink)}
 .n.cor{background:var(--coral);color:#fff}
 .c{
@@ -147,9 +147,9 @@ h1 .b,h2 .b{font-style:italic;color:var(--violet);font-size:1.05em}
   font:400 24px/1.45 var(--text);
 }
 .c.ui{font:500 20px/1.35 var(--ui);color:var(--muted)}
-.c.it{font:italic 600 38px/1 var(--display);color:var(--violet-ink)}
+.c.it{font:italic 600 38px/1 var(--display);color:var(--accent-ink)}
 svg.ln{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.l-v{stroke:var(--violet);stroke-width:3;fill:none;stroke-linecap:round}
+.l-v{stroke:var(--accent);stroke-width:3;fill:none;stroke-linecap:round}
 .l-c{stroke:var(--coral);stroke-width:3;fill:none;stroke-linecap:round}
 .l-t{stroke:var(--teal);stroke-width:3;fill:none;stroke-linecap:round}
 .l-g{stroke:#B98A1E;stroke-width:3;fill:none;stroke-linecap:round}
@@ -157,7 +157,7 @@ svg.ln{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer
 @keyframes dash{to{stroke-dashoffset:-30}}
 
 /* ───────── Cover ───────── */
-#s1 .meta-top{position:absolute;left:120px;top:96px;font:500 18px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--lilac)}
+#s1 .meta-top{position:absolute;left:120px;top:96px;font:500 18px/1 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
 #s1 .stack{position:absolute;left:120px;top:190px;width:1050px}
 #s1 h1{font-size:104px;margin-bottom:40px}
 #s1 .sub{width:860px;font:400 30px/1.55 var(--text);color:rgba(250,248,243,.82)}
@@ -169,8 +169,8 @@ svg.ln{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer
 /* ───────── Plan ───────── */
 .plan{position:absolute;left:120px;right:120px;top:470px}
 .plan-grid{display:grid;grid-template-columns:560px 1fr 1fr;column-gap:56px}
-.plan-head{padding-bottom:18px;border-bottom:1px solid rgba(33,26,53,.25);font:italic 400 24px/1.3 var(--text);color:var(--muted)}
-.plan-row{padding:34px 0 36px;border-bottom:1px solid rgba(33,26,53,.14)}
+.plan-head{padding-bottom:18px;border-bottom:1px solid rgba(19,35,63,.25);font:italic 400 24px/1.3 var(--text);color:var(--muted)}
+.plan-row{padding:34px 0 36px;border-bottom:1px solid rgba(19,35,63,.14)}
 .plan-name{font:600 58px/1.0 var(--display);display:flex;align-items:center;gap:22px}
 .plan-name i{display:inline-block;width:22px;height:22px;border-radius:50%;flex:none}
 .plan-row p{font:400 27px/1.5 var(--text)}
@@ -185,19 +185,19 @@ svg.ln{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer
 @keyframes ripple{from{transform:scale(.1);opacity:.95}to{transform:scale(1);opacity:0}}
 .rp{fill:none;stroke-width:2.5;transform-origin:450px 450px}
 .slide.active .rp{animation:ripple 8s cubic-bezier(.25,.6,.3,1) infinite;animation-delay:calc(var(--i)*-1.6s)}
-@keyframes dim{to{fill:#6a5a92;opacity:.4}}
-.rn{fill:var(--lilac)}
+@keyframes dim{to{fill:#4f6890;opacity:.4}}
+.rn{fill:var(--sky)}
 .rn.m{fill:#9ADCC9}
 .slide.active .rn{animation:dim .9s ease forwards;animation-delay:calc(var(--i)*.16s + 1.6s)}
 @keyframes linefade{to{opacity:.1}}
-.ring-lines{stroke:var(--lilac);stroke-width:1.4;opacity:.55}
+.ring-lines{stroke:var(--sky);stroke-width:1.4;opacity:.55}
 .slide.active .ring-lines{animation:linefade 3.5s ease forwards;animation-delay:2.2s}
 
 /* ───────── Alimentation ───────── */
 .big{font:600 200px/0.9 var(--display);letter-spacing:-.02em}
 .big small{font-size:.5em;font-weight:500}
 .dots{position:absolute;left:900px;top:395px;display:grid;grid-template-columns:repeat(10,30px);gap:20px}
-.dots .d{width:30px;height:30px;border-radius:50%;background:var(--lavender);transition:background .5s,transform .5s}
+.dots .d{width:30px;height:30px;border-radius:50%;background:var(--mist);transition:background .5s,transform .5s}
 .st-1 .dots .d.g{background:var(--gold);transform:scale(1.14);transition-delay:calc(var(--k)*45ms)}
 .country{font:400 27px/1.5 var(--text)}
 .country i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--coral);margin-right:16px}
@@ -208,7 +208,7 @@ svg.ln{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer
 .col h3{font:600 56px/1.05 var(--display);margin-bottom:14px}
 .col svg{display:block;width:600px;height:320px;margin:4px 0 6px}
 .col p{font:400 25px/1.55 var(--text);max-width:700px}
-.vline{position:absolute;left:960px;top:400px;width:1px;height:500px;background:rgba(33,26,53,.18)}
+.vline{position:absolute;left:960px;top:400px;width:1px;height:500px;background:rgba(19,35,63,.18)}
 .sym{font:600 30px var(--ui)}
 
 /* ───────── Graphiques ───────── */
@@ -231,11 +231,11 @@ svg.ln{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer
 /* ───────── Boutons de navigation (hors scène) ───────── */
 .navbtn{
   position:fixed;bottom:18px;width:46px;height:46px;border-radius:50%;
-  border:1px solid rgba(250,248,243,.35);background:rgba(33,26,53,.55);
+  border:1px solid rgba(250,248,243,.35);background:rgba(19,35,63,.55);
   color:#fff;font:400 20px/1 var(--ui);cursor:pointer;opacity:0;transition:opacity .3s;
   backdrop-filter:blur(6px);z-index:10;
 }
-.navbtn:focus-visible{opacity:1;outline:2px solid var(--lilac);outline-offset:3px}
+.navbtn:focus-visible{opacity:1;outline:2px solid var(--sky);outline-offset:3px}
 body.moving .navbtn{opacity:1}
 #prev{right:78px}#next{right:20px}
 
@@ -248,7 +248,7 @@ body.moving .navbtn{opacity:1}
 
 <!-- Définitions des pointes de flèche -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <marker id="ah-v" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#7852EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="ah-v" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#2563C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
   <marker id="ah-c" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#C45B52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
   <marker id="ah-t" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#0B776E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
   <marker id="ah-g" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1.5 L10 6 L2 10.5" fill="none" stroke="#B98A1E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
@@ -298,25 +298,212 @@ body.moving .navbtn{opacity:1}
     </div>
 
     <div class="plan-grid plan-row" data-step="1">
-      <div class="plan-name"><i style="background:var(--gold)"></i>Guerre Russie–Ukraine</div>
-      <p>Une crise de l’énergie, puis une crise du blé.</p>
-      <p>Des flux réorientés vers l’Asie, un monde qui se divise en blocs.</p>
-    </div>
-
-    <div class="plan-grid plan-row" data-step="2">
       <div class="plan-name"><i style="background:var(--teal)"></i>COVID-19</div>
       <p>Des pénuries, un commerce qui recule, un PIB en récession.</p>
       <p>Des relocalisations et des barrières commerciales qui se multiplient.</p>
+    </div>
+
+    <div class="plan-grid plan-row" data-step="2">
+      <div class="plan-name"><i style="background:var(--gold)"></i>Guerre Russie–Ukraine</div>
+      <p>Une crise de l’énergie, puis une crise du blé.</p>
+      <p>Des flux réorientés vers l’Asie, un monde qui se divise en blocs.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════════════════
-     DIAPO 3 — CHAPITRE 1 : RUSSIE–UKRAINE
+     DIAPO 3 — CHAPITRE 1 : COVID-19
      ═══════════════════════════════════════════════════════════ -->
 <section class="slide dark divider" id="s3">
-  <div class="kicker">01 / Guerre Russie–Ukraine</div>
+  <div class="kicker">01 / COVID-19</div>
+  <div class="stack">
+    <h1>
+      <span class="a">Quand le monde s’arrête,</span>
+      <span class="b">les échanges ralentissent.</span>
+    </h1>
+    <p class="lead">Le virus apparaît à Wuhan en novembre 2019. Il frappe un commerce mondial multiplié par 60 depuis les années 1970.</p>
+    <div class="qs">
+      <div><i style="background:var(--sky)"></i>(a) Conséquences économiques et sectorielles</div>
+      <div><i style="background:var(--sky)"></i>(b) Nouvelle cartographie des échanges</div>
+    </div>
+  </div>
+  <svg class="art" id="ring" viewBox="0 0 900 900" aria-hidden="true"></svg>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 4 — COVID (a) : PÉNURIES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s4">
+  <div class="kicker">01 / COVID-19 : les pénuries (a)</div>
+  <h2 class="m">
+    <span class="a">Une dépendance à la Chine</span>
+    <span class="b">mise à nu.</span>
+  </h2>
+
+  <div class="dg" style="top:380px;height:570px">
+    <!-- Ligne 1 -->
+    <div class="grp" data-step="1">
+      <div class="c it" style="--x:180px;--y:70px;--w:340px;text-align:left;transform:translateX(-50%);line-height:1.1">Produits de première nécessité</div>
+      <svg class="ln">
+        <path class="l-v" d="M609 110 L871 110" marker-end="url(#ah-v)"/>
+        <path class="l-c" d="M1049 110 L1311 110" marker-end="url(#ah-c)"/>
+      </svg>
+      <div class="n mint" style="--x:520px;--y:110px;--d:150px">Chine</div>
+      <div class="n peach" style="--x:960px;--y:110px;--d:150px">Blocage</div>
+      <div class="n aub" style="--x:1400px;--y:110px;--d:150px">États</div>
+      <div class="c" style="--x:520px;--y:209px;--w:420px">Principal fournisseur de produits de première nécessité.</div>
+      <div class="c" style="--x:960px;--y:209px;--w:420px">Frontières fermées : les échanges mondiaux se bloquent.</div>
+      <div class="c" style="--x:1400px;--y:209px;--w:420px">Course aux masques et au paracétamol entre États.</div>
+    </div>
+
+    <!-- Ligne 2 -->
+    <div class="grp" data-step="2">
+      <div class="c it" style="--x:180px;--y:360px;--w:340px;text-align:left;transform:translateX(-50%);line-height:1.1">Composants à haute valeur ajoutée</div>
+      <svg class="ln">
+        <path class="l-v" d="M609 400 L871 400" marker-end="url(#ah-v)"/>
+        <path class="l-c" d="M1049 400 L1311 400" marker-end="url(#ah-c)"/>
+      </svg>
+      <div class="n mint" style="--x:520px;--y:400px;--d:150px">Usines</div>
+      <div class="n peach" style="--x:960px;--y:400px;--d:150px">Fermées</div>
+      <div class="n aub" style="--x:1400px;--y:400px;--d:150px">Airbus</div>
+      <div class="c" style="--x:520px;--y:499px;--w:420px">À Shenzhen et Shanghai, on fabrique des pièces uniques.</div>
+      <div class="c" style="--x:960px;--y:499px;--w:420px">Les usines ferment : les chaînes se grippent.</div>
+      <div class="c" style="--x:1400px;--y:499px;--w:420px">Faute de gouvernails, Airbus se retrouve en difficulté.</div>
+    </div>
+  </div>
+
+  <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations ».</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 5 — COVID (a) : CHUTE DU COMMERCE ET DU PIB
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s5">
+  <div class="kicker">01 / COVID-19 : le commerce et la croissance (a)</div>
+  <h2 class="m">
+    <span class="a">−7&nbsp;% en moyenne.</span>
+    <span class="b">Jusqu’à −26&nbsp;% en Afrique du Nord.</span>
+  </h2>
+
+  <div class="chart1" data-step="1">
+    <div class="ct">Variation des échanges de marchandises entre 2018 et 2020, en %</div>
+    <div class="crow"><span class="rl">Afrique du Nord</span><span class="track"><i class="bar" style="--w:26;--k:0"></i><b>−26&nbsp;%</b></span></div>
+    <div class="crow"><span class="rl">Asie de l’Ouest</span><span class="track"><i class="bar" style="--w:20;--k:1"></i><b>−20&nbsp;%</b></span></div>
+    <div class="crow"><span class="rl">Afrique, ensemble du continent</span><span class="track"><i class="bar" style="--w:14;--k:2"></i><b>−14&nbsp;%</b></span></div>
+    <div class="crow"><span class="rl">Amériques, Europe, Océanie</span><span class="track"><i class="bar t" style="--w:7;--k:3"></i><b>−7&nbsp;%</b><em>atténué par de massifs plans de soutien</em></span></div>
+    <div class="avg"></div>
+    <div class="avg-l">moyenne mondiale : −7&nbsp;%</div>
+  </div>
+
+  <div class="chart2" data-step="2">
+    <div class="ct">Croissance du PIB mondial, en %</div>
+    <svg viewBox="0 0 540 450" aria-label="Croissance du PIB mondial : -3 % en 2020, +6 % en 2021, 3,1 % en 2022, environ 3 % prévu en 2023">
+      <line x1="0" y1="250" x2="540" y2="250" stroke="#13233F" stroke-opacity=".35" stroke-width="1.5"/>
+      <rect x="30"  y="250" width="90" height="90"  fill="#C45B52"/>
+      <rect x="160" y="70"  width="90" height="180" fill="#0B776E"/>
+      <rect x="290" y="157" width="90" height="93"  fill="#7FA8E8"/>
+      <rect x="420" y="160" width="90" height="90"  fill="none" stroke="#2563C9" stroke-width="3" stroke-dasharray="7 7"/>
+      <g style="font:600 36px var(--display)" text-anchor="middle" fill="#13233F">
+        <text x="75"  y="378">−3</text>
+        <text x="205" y="56">+6</text>
+        <text x="335" y="143">3,1</text>
+        <text x="465" y="146">≈ 3</text>
+      </g>
+      <g style="font:500 19px var(--ui)" text-anchor="middle" fill="#5E6878">
+        <text x="75"  y="422">2020</text>
+        <text x="205" y="422">2021</text>
+        <text x="335" y="422">2022</text>
+        <text x="465" y="422">2023</text>
+        <text x="465" y="445" style="font-style:italic">prévision</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="src">Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations » (chiffres cités dans la vidéo).</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 6 — COVID (b) : RELOCALISATIONS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s6">
+  <div class="kicker">01 / COVID-19 : les relocalisations (b)</div>
+  <h2>
+    <span class="a">Produire plus près.</span>
+    <span class="b">Dépendre moins.</span>
+  </h2>
+
+  <p class="lead" style="position:absolute;left:120px;top:400px;font-size:25px;width:660px">
+    La pandémie a révélé des failles dans la santé : les États repensent leur souveraineté industrielle.
+  </p>
+
+  <div data-step="1" style="position:absolute;left:120px;top:545px">
+    <div class="big" style="color:var(--accent)">52<small>&nbsp;Md$</small></div>
+    <p style="font:400 25px/1.5 var(--text);width:640px;margin-top:20px">
+      sur 10 ans : le plan de l’administration Biden pour rapatrier la fabrication de semi-conducteurs et réduire la dépendance envers Taïwan.
+    </p>
+  </div>
+
+  <div class="dg" style="left:900px;top:380px;width:900px;height:560px">
+    <div class="grp" data-step="2">
+      <svg class="ln">
+        <path class="l-c" d="M215 150 C 380 80, 480 52, 621 52" marker-end="url(#ah-c)"/>
+        <path class="l-c" d="M229 200 L621 200" marker-end="url(#ah-c)"/>
+        <path class="l-c" d="M215 250 C 380 320, 480 348, 621 348" marker-end="url(#ah-c)"/>
+      </svg>
+      <div class="n peach" style="--x:130px;--y:200px;--d:170px;font-size:40px">Chine</div>
+      <div class="n mint" style="--x:700px;--y:52px;--d:130px;font-size:30px">Inde</div>
+      <div class="n mint" style="--x:700px;--y:200px;--d:130px;font-size:30px">Vietnam</div>
+      <div class="n mint" style="--x:700px;--y:348px;--d:130px;font-size:30px">Brésil</div>
+      <div class="c it" style="--x:420px;--y:148px;--w:160px">Apple</div>
+      <div class="c" style="--x:450px;--y:440px;--w:860px;font-size:23px">Des géants comme Apple sortent leur production de Chine.</div>
+    </div>
+
+    <div class="grp" data-step="3">
+      <div class="c" style="--x:450px;--y:492px;--w:820px;font-size:23px;color:var(--teal);font-weight:700">En Europe, la course aux « giga-usines » de composants électroniques et de batteries est lancée.</div>
+    </div>
+  </div>
+
+  <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations ».</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 7 — COVID (b) : BARRIÈRES ET DÉCOUPLAGE
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s7">
+  <div class="kicker">01 / COVID-19 : la fragmentation (b)</div>
+  <h2 class="m">
+    <span class="a">Des barrières qui triplent.</span>
+    <span class="b">Un monde qui se scinde ?</span>
+  </h2>
+
+  <div data-step="1" style="position:absolute;left:120px;top:395px">
+    <div class="big" style="color:var(--coral);font-size:210px">×3</div>
+    <p style="font:400 25px/1.5 var(--text);width:700px;margin-top:14px">Selon le FMI, les barrières commerciales ont triplé depuis 2019.</p>
+  </div>
+
+  <p data-step="2" style="position:absolute;left:120px;top:770px;width:720px;font:400 24px/1.55 var(--text)">
+    L’OMC met en garde contre un <span class="hl-c">découplage</span> : deux blocs autonomes, où l’on ne commerce qu’entre pays partageant les mêmes valeurs.
+  </p>
+
+  <div data-step="1" style="position:absolute;left:940px;top:400px;width:860px;height:560px">
+    <svg id="g12" viewBox="0 0 860 540" style="width:860px;height:540px;display:block" aria-label="Schéma conceptuel : un réseau commercial unique se sépare en deux blocs"></svg>
+    <div style="position:absolute;left:0;right:0;bottom:-6px;text-align:center;font:italic 400 17px/1 var(--ui);color:var(--muted)">Schéma conceptuel. Pointillés : échanges entre les deux blocs.</div>
+  </div>
+
+  <div class="src" style="right:auto">Source : ARTE, <em>Le dessous des cartes</em> (FMI, OMC cités dans la vidéo).</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIAPO 8 — CHAPITRE 2 : RUSSIE–UKRAINE
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide dark divider" id="s8">
+  <div class="kicker">02 / Guerre Russie–Ukraine</div>
   <div class="stack">
     <h1>
       <span class="a">Une guerre régionale.</span>
@@ -332,7 +519,7 @@ body.moving .navbtn{opacity:1}
   <svg class="art" viewBox="0 0 900 900" aria-hidden="true">
     <circle class="rp" style="--i:0" cx="450" cy="450" r="440" stroke="#E5B551"/>
     <circle class="rp" style="--i:1" cx="450" cy="450" r="440" stroke="#C45B52"/>
-    <circle class="rp" style="--i:2" cx="450" cy="450" r="440" stroke="#A882FF"/>
+    <circle class="rp" style="--i:2" cx="450" cy="450" r="440" stroke="#7FA8E8"/>
     <circle class="rp" style="--i:3" cx="450" cy="450" r="440" stroke="#E5B551"/>
     <circle class="rp" style="--i:4" cx="450" cy="450" r="440" stroke="#C45B52"/>
     <circle cx="450" cy="450" r="16" fill="#E5B551"/>
@@ -341,10 +528,10 @@ body.moving .navbtn{opacity:1}
 
 
 <!-- ═══════════════════════════════════════════════════════════
-     DIAPO 4 — RUSSIE (a) : ÉNERGIE
+     DIAPO 9 — RUSSIE (a) : ÉNERGIE
      ═══════════════════════════════════════════════════════════ -->
-<section class="slide" id="s4">
-  <div class="kicker">01 / Russie–Ukraine : l’énergie (a)</div>
+<section class="slide" id="s9">
+  <div class="kicker">02 / Russie–Ukraine : l’énergie (a)</div>
   <h2>
     <span class="a">L’énergie devient</span>
     <span class="b">une arme géopolitique.</span>
@@ -380,10 +567,10 @@ body.moving .navbtn{opacity:1}
 
 
 <!-- ═══════════════════════════════════════════════════════════
-     DIAPO 5 — RUSSIE (a) : ALIMENTATION
+     DIAPO 10 — RUSSIE (a) : ALIMENTATION
      ═══════════════════════════════════════════════════════════ -->
-<section class="slide" id="s5">
-  <div class="kicker">01 / Russie–Ukraine : l’alimentation (a)</div>
+<section class="slide" id="s10">
+  <div class="kicker">02 / Russie–Ukraine : l’alimentation (a)</div>
   <h2 class="m">
     <span class="a">Le grenier à blé</span>
     <span class="b">se bloque.</span>
@@ -423,10 +610,10 @@ body.moving .navbtn{opacity:1}
 
 
 <!-- ═══════════════════════════════════════════════════════════
-     DIAPO 6 — RUSSIE (b) : FLUX ÉNERGÉTIQUES
+     DIAPO 11 — RUSSIE (b) : FLUX ÉNERGÉTIQUES
      ═══════════════════════════════════════════════════════════ -->
-<section class="slide" id="s6">
-  <div class="kicker">01 / Russie–Ukraine : les flux (b)</div>
+<section class="slide" id="s11">
+  <div class="kicker">02 / Russie–Ukraine : les flux (b)</div>
   <h2 class="m">
     <span class="a">Les flux d’énergie</span>
     <span class="b">changent de cap.</span>
@@ -481,10 +668,10 @@ body.moving .navbtn{opacity:1}
 
 
 <!-- ═══════════════════════════════════════════════════════════
-     DIAPO 7 — RUSSIE (b) : BLOCS
+     DIAPO 12 — RUSSIE (b) : BLOCS
      ═══════════════════════════════════════════════════════════ -->
-<section class="slide" id="s7">
-  <div class="kicker">01 / Russie–Ukraine : la fragmentation (b)</div>
+<section class="slide" id="s12">
+  <div class="kicker">02 / Russie–Ukraine : la fragmentation (b)</div>
   <h2 class="m">
     <span class="a">Le monde s’organise</span>
     <span class="b">en blocs.</span>
@@ -496,7 +683,7 @@ body.moving .navbtn{opacity:1}
     <div class="col" style="left:0" data-step="1">
       <h3>Nearshoring et autonomie</h3>
       <svg viewBox="0 0 560 300" aria-hidden="true">
-        <circle cx="280" cy="150" r="148" fill="none" stroke="#A882FF" stroke-width="2" stroke-dasharray="4 8"/>
+        <circle cx="280" cy="150" r="148" fill="none" stroke="#7FA8E8" stroke-width="2" stroke-dasharray="4 8"/>
         <g stroke="#0B776E" stroke-width="3">
           <line x1="280" y1="150" x2="280" y2="34"/>
           <line x1="280" y1="150" x2="391" y2="115"/>
@@ -508,7 +695,7 @@ body.moving .navbtn{opacity:1}
           <circle cx="280" cy="34" r="26"/><circle cx="391" cy="115" r="26"/>
           <circle cx="349" cy="244" r="26"/><circle cx="211" cy="244" r="26"/><circle cx="169" cy="115" r="26"/>
         </g>
-        <circle cx="280" cy="150" r="52" fill="#7852EE"/>
+        <circle cx="280" cy="150" r="52" fill="#2563C9"/>
         <text x="280" y="160" text-anchor="middle" fill="#fff" style="font:600 30px var(--display)">Pays</text>
       </svg>
       <p>Relocaliser ou rapatrier les approvisionnements stratégiques chez des pays alliés, pour ne plus dépendre d’un seul partenaire.</p>
@@ -517,213 +704,26 @@ body.moving .navbtn{opacity:1}
     <div class="col" style="left:900px" data-step="2">
       <h3>BRICS+ et dédollarisation</h3>
       <svg viewBox="0 0 560 300" aria-hidden="true">
-        <circle cx="280" cy="150" r="48" fill="none" stroke="#6B6480" stroke-width="2" stroke-dasharray="5 7" opacity=".7"/>
-        <text x="280" y="162" text-anchor="middle" fill="#6B6480" opacity=".8" style="font:600 36px var(--ui)">$</text>
-        <g stroke="#7852EE" stroke-width="3">
+        <circle cx="280" cy="150" r="48" fill="none" stroke="#5E6878" stroke-width="2" stroke-dasharray="5 7" opacity=".7"/>
+        <text x="280" y="162" text-anchor="middle" fill="#5E6878" opacity=".8" style="font:600 36px var(--ui)">$</text>
+        <g stroke="#2563C9" stroke-width="3">
           <line x1="280" y1="46" x2="388" y2="224"/>
           <line x1="388" y1="224" x2="172" y2="224"/>
           <line x1="172" y1="224" x2="280" y2="46"/>
         </g>
-        <g fill="#E8E1F8" stroke="#7852EE" stroke-width="3">
+        <g fill="#DFE8F6" stroke="#2563C9" stroke-width="3">
           <circle cx="280" cy="46" r="38"/><circle cx="388" cy="224" r="38"/><circle cx="172" cy="224" r="38"/>
         </g>
-        <g fill="#5A38C8" text-anchor="middle" class="sym">
+        <g fill="#1C4C9E" text-anchor="middle" class="sym">
           <text x="280" y="57">¥</text><text x="388" y="235">₽</text><text x="172" y="235">₹</text>
         </g>
-        <text x="280" y="290" text-anchor="middle" fill="#6B6480" style="font:italic 400 19px var(--ui)">yuan · rouble · roupie : le dollar contourné</text>
+        <text x="280" y="290" text-anchor="middle" fill="#5E6878" style="font:italic 400 19px var(--ui)">yuan · rouble · roupie : le dollar contourné</text>
       </svg>
       <p>L’axe Chine–Russie–Moyen-Orient se renforce et accueille de nouveaux membres. Objectif : régler les échanges en monnaies nationales.</p>
     </div>
   </div>
 
   <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>.</div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     DIAPO 8 — CHAPITRE 2 : COVID-19
-     ═══════════════════════════════════════════════════════════ -->
-<section class="slide dark divider" id="s8">
-  <div class="kicker">02 / COVID-19</div>
-  <div class="stack">
-    <h1>
-      <span class="a">Quand le monde s’arrête,</span>
-      <span class="b">les échanges ralentissent.</span>
-    </h1>
-    <p class="lead">Le virus apparaît à Wuhan en novembre 2019. Il frappe un commerce mondial multiplié par 60 depuis les années 1970.</p>
-    <div class="qs">
-      <div><i style="background:var(--lilac)"></i>(a) Conséquences économiques et sectorielles</div>
-      <div><i style="background:var(--lilac)"></i>(b) Nouvelle cartographie des échanges</div>
-    </div>
-  </div>
-  <svg class="art" id="ring" viewBox="0 0 900 900" aria-hidden="true"></svg>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     DIAPO 9 — COVID (a) : PÉNURIES
-     ═══════════════════════════════════════════════════════════ -->
-<section class="slide" id="s9">
-  <div class="kicker">02 / COVID-19 : les pénuries (a)</div>
-  <h2 class="m">
-    <span class="a">Une dépendance à la Chine</span>
-    <span class="b">mise à nu.</span>
-  </h2>
-
-  <div class="dg" style="top:380px;height:570px">
-    <!-- Ligne 1 -->
-    <div class="grp" data-step="1">
-      <div class="c it" style="--x:180px;--y:70px;--w:340px;text-align:left;transform:translateX(-50%);line-height:1.1">Produits de première nécessité</div>
-      <svg class="ln">
-        <path class="l-v" d="M609 110 L871 110" marker-end="url(#ah-v)"/>
-        <path class="l-c" d="M1049 110 L1311 110" marker-end="url(#ah-c)"/>
-      </svg>
-      <div class="n mint" style="--x:520px;--y:110px;--d:150px">Chine</div>
-      <div class="n peach" style="--x:960px;--y:110px;--d:150px">Blocage</div>
-      <div class="n aub" style="--x:1400px;--y:110px;--d:150px">États</div>
-      <div class="c" style="--x:520px;--y:209px;--w:420px">Principal fournisseur de produits de première nécessité.</div>
-      <div class="c" style="--x:960px;--y:209px;--w:420px">Frontières fermées : les échanges mondiaux se bloquent.</div>
-      <div class="c" style="--x:1400px;--y:209px;--w:420px">Course aux masques et au paracétamol entre États.</div>
-    </div>
-
-    <!-- Ligne 2 -->
-    <div class="grp" data-step="2">
-      <div class="c it" style="--x:180px;--y:360px;--w:340px;text-align:left;transform:translateX(-50%);line-height:1.1">Composants à haute valeur ajoutée</div>
-      <svg class="ln">
-        <path class="l-v" d="M609 400 L871 400" marker-end="url(#ah-v)"/>
-        <path class="l-c" d="M1049 400 L1311 400" marker-end="url(#ah-c)"/>
-      </svg>
-      <div class="n mint" style="--x:520px;--y:400px;--d:150px">Usines</div>
-      <div class="n peach" style="--x:960px;--y:400px;--d:150px">Fermées</div>
-      <div class="n aub" style="--x:1400px;--y:400px;--d:150px">Airbus</div>
-      <div class="c" style="--x:520px;--y:499px;--w:420px">À Shenzhen et Shanghai, on fabrique des pièces uniques.</div>
-      <div class="c" style="--x:960px;--y:499px;--w:420px">Les usines ferment : les chaînes se grippent.</div>
-      <div class="c" style="--x:1400px;--y:499px;--w:420px">Faute de gouvernails, Airbus se retrouve en difficulté.</div>
-    </div>
-  </div>
-
-  <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations ».</div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     DIAPO 10 — COVID (a) : CHUTE DU COMMERCE ET DU PIB
-     ═══════════════════════════════════════════════════════════ -->
-<section class="slide" id="s10">
-  <div class="kicker">02 / COVID-19 : le commerce et la croissance (a)</div>
-  <h2 class="m">
-    <span class="a">−7&nbsp;% en moyenne.</span>
-    <span class="b">Jusqu’à −26&nbsp;% en Afrique du Nord.</span>
-  </h2>
-
-  <div class="chart1" data-step="1">
-    <div class="ct">Variation des échanges de marchandises entre 2018 et 2020, en %</div>
-    <div class="crow"><span class="rl">Afrique du Nord</span><span class="track"><i class="bar" style="--w:26;--k:0"></i><b>−26&nbsp;%</b></span></div>
-    <div class="crow"><span class="rl">Asie de l’Ouest</span><span class="track"><i class="bar" style="--w:20;--k:1"></i><b>−20&nbsp;%</b></span></div>
-    <div class="crow"><span class="rl">Afrique, ensemble du continent</span><span class="track"><i class="bar" style="--w:14;--k:2"></i><b>−14&nbsp;%</b></span></div>
-    <div class="crow"><span class="rl">Amériques, Europe, Océanie</span><span class="track"><i class="bar t" style="--w:7;--k:3"></i><b>−7&nbsp;%</b><em>atténué par de massifs plans de soutien</em></span></div>
-    <div class="avg"></div>
-    <div class="avg-l">moyenne mondiale : −7&nbsp;%</div>
-  </div>
-
-  <div class="chart2" data-step="2">
-    <div class="ct">Croissance du PIB mondial, en %</div>
-    <svg viewBox="0 0 540 450" aria-label="Croissance du PIB mondial : -3 % en 2020, +6 % en 2021, 3,1 % en 2022, environ 3 % prévu en 2023">
-      <line x1="0" y1="250" x2="540" y2="250" stroke="#211A35" stroke-opacity=".35" stroke-width="1.5"/>
-      <rect x="30"  y="250" width="90" height="90"  fill="#C45B52"/>
-      <rect x="160" y="70"  width="90" height="180" fill="#0B776E"/>
-      <rect x="290" y="157" width="90" height="93"  fill="#A882FF"/>
-      <rect x="420" y="160" width="90" height="90"  fill="none" stroke="#7852EE" stroke-width="3" stroke-dasharray="7 7"/>
-      <g style="font:600 36px var(--display)" text-anchor="middle" fill="#211A35">
-        <text x="75"  y="378">−3</text>
-        <text x="205" y="56">+6</text>
-        <text x="335" y="143">3,1</text>
-        <text x="465" y="146">≈ 3</text>
-      </g>
-      <g style="font:500 19px var(--ui)" text-anchor="middle" fill="#6B6480">
-        <text x="75"  y="422">2020</text>
-        <text x="205" y="422">2021</text>
-        <text x="335" y="422">2022</text>
-        <text x="465" y="422">2023</text>
-        <text x="465" y="445" style="font-style:italic">prévision</text>
-      </g>
-    </svg>
-  </div>
-
-  <div class="src">Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations » (chiffres cités dans la vidéo).</div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     DIAPO 11 — COVID (b) : RELOCALISATIONS
-     ═══════════════════════════════════════════════════════════ -->
-<section class="slide" id="s11">
-  <div class="kicker">02 / COVID-19 : les relocalisations (b)</div>
-  <h2>
-    <span class="a">Produire plus près.</span>
-    <span class="b">Dépendre moins.</span>
-  </h2>
-
-  <p class="lead" style="position:absolute;left:120px;top:400px;font-size:25px;width:660px">
-    La pandémie a révélé des failles dans la santé : les États repensent leur souveraineté industrielle.
-  </p>
-
-  <div data-step="1" style="position:absolute;left:120px;top:545px">
-    <div class="big" style="color:var(--violet)">52<small>&nbsp;Md$</small></div>
-    <p style="font:400 25px/1.5 var(--text);width:640px;margin-top:20px">
-      sur 10 ans : le plan de l’administration Biden pour rapatrier la fabrication de semi-conducteurs et réduire la dépendance envers Taïwan.
-    </p>
-  </div>
-
-  <div class="dg" style="left:900px;top:380px;width:900px;height:560px">
-    <div class="grp" data-step="2">
-      <svg class="ln">
-        <path class="l-c" d="M215 150 C 380 80, 480 52, 621 52" marker-end="url(#ah-c)"/>
-        <path class="l-c" d="M229 200 L621 200" marker-end="url(#ah-c)"/>
-        <path class="l-c" d="M215 250 C 380 320, 480 348, 621 348" marker-end="url(#ah-c)"/>
-      </svg>
-      <div class="n peach" style="--x:130px;--y:200px;--d:170px;font-size:40px">Chine</div>
-      <div class="n mint" style="--x:700px;--y:52px;--d:130px;font-size:30px">Inde</div>
-      <div class="n mint" style="--x:700px;--y:200px;--d:130px;font-size:30px">Vietnam</div>
-      <div class="n mint" style="--x:700px;--y:348px;--d:130px;font-size:30px">Brésil</div>
-      <div class="c it" style="--x:420px;--y:148px;--w:160px">Apple</div>
-      <div class="c" style="--x:450px;--y:440px;--w:860px;font-size:23px">Des géants comme Apple sortent leur production de Chine.</div>
-    </div>
-
-    <div class="grp" data-step="3">
-      <div class="c" style="--x:450px;--y:492px;--w:820px;font-size:23px;color:var(--teal);font-weight:700">En Europe, la course aux « giga-usines » de composants électroniques et de batteries est lancée.</div>
-    </div>
-  </div>
-
-  <div class="src">Schéma conceptuel. Source : ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations ».</div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     DIAPO 12 — COVID (b) : BARRIÈRES ET DÉCOUPLAGE
-     ═══════════════════════════════════════════════════════════ -->
-<section class="slide" id="s12">
-  <div class="kicker">02 / COVID-19 : la fragmentation (b)</div>
-  <h2 class="m">
-    <span class="a">Des barrières qui triplent.</span>
-    <span class="b">Un monde qui se scinde ?</span>
-  </h2>
-
-  <div data-step="1" style="position:absolute;left:120px;top:395px">
-    <div class="big" style="color:var(--coral);font-size:210px">×3</div>
-    <p style="font:400 25px/1.5 var(--text);width:700px;margin-top:14px">Selon le FMI, les barrières commerciales ont triplé depuis 2019.</p>
-  </div>
-
-  <p data-step="2" style="position:absolute;left:120px;top:770px;width:720px;font:400 24px/1.55 var(--text)">
-    L’OMC met en garde contre un <span class="hl-c">découplage</span> : deux blocs autonomes, où l’on ne commerce qu’entre pays partageant les mêmes valeurs.
-  </p>
-
-  <div data-step="1" style="position:absolute;left:940px;top:400px;width:860px;height:560px">
-    <svg id="g12" viewBox="0 0 860 540" style="width:860px;height:540px;display:block" aria-label="Schéma conceptuel : un réseau commercial unique se sépare en deux blocs"></svg>
-    <div style="position:absolute;left:0;right:0;bottom:-6px;text-align:center;font:italic 400 17px/1 var(--ui);color:var(--muted)">Schéma conceptuel. Pointillés : échanges entre les deux blocs.</div>
-  </div>
-
-  <div class="src" style="right:auto">Source : ARTE, <em>Le dessous des cartes</em> (FMI, OMC cités dans la vidéo).</div>
 </section>
 
 
@@ -741,15 +741,15 @@ body.moving .navbtn{opacity:1}
   <div style="position:absolute;left:120px;right:120px;top:520px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:80px">
     <div data-step="1" style="border-top:3px solid var(--coral);padding-top:26px">
       <h3 style="font:600 58px/1.05 var(--display);margin-bottom:20px">Des dépendances</h3>
-      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">Gaz russe, blé de la mer Noire, composants chinois : une dépendance devient vite un choc.</p>
+      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">Composants chinois, gaz russe, blé de la mer Noire : une dépendance devient vite un choc.</p>
     </div>
     <div data-step="2" style="border-top:3px solid #9ADCC9;padding-top:26px">
       <h3 style="font:600 58px/1.05 var(--display);margin-bottom:20px">Des flux réorientés</h3>
-      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">Hydrocarbures russes vers l’Asie, GNL vers l’Europe, production déplacée vers l’Inde et le Vietnam.</p>
+      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">Production déplacée vers l’Inde et le Vietnam, hydrocarbures russes vers l’Asie, GNL vers l’Europe.</p>
     </div>
     <div data-step="3" style="border-top:3px solid var(--gold);padding-top:26px">
       <h3 style="font:600 58px/1.05 var(--display);margin-bottom:20px">Des blocs qui se dessinent</h3>
-      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">BRICS+, dédollarisation, barrières triplées : l’OMC redoute un découplage en deux blocs.</p>
+      <p style="font:400 28px/1.55 var(--text);color:rgba(250,248,243,.88)">Barrières triplées, BRICS+, dédollarisation : l’OMC redoute un découplage en deux blocs.</p>
     </div>
   </div>
 </section>
@@ -771,10 +771,10 @@ body.moving .navbtn{opacity:1}
   </div>
 
   <div style="position:absolute;left:1060px;top:440px;width:740px">
-    <div style="font:italic 600 46px/1 var(--display);margin-bottom:26px;color:var(--violet-ink)">Sources</div>
+    <div style="font:italic 600 46px/1 var(--display);margin-bottom:26px;color:var(--accent-ink)">Sources</div>
     <p style="font:400 24px/1.55 var(--text);margin-bottom:30px">
       ARTE, <em>Le dessous des cartes</em>, « Commerce mondial : crises et fragmentations » (COVID-19).<br>
-      <a href="https://www.youtube.com/watch?v=cdhLD0onUNw" target="_blank" rel="noopener" style="font:400 18px var(--ui);color:var(--violet-ink)">youtube.com/watch?v=cdhLD0onUNw</a>
+      <a href="https://www.youtube.com/watch?v=cdhLD0onUNw" target="_blank" rel="noopener" style="font:400 18px var(--ui);color:var(--accent-ink)">youtube.com/watch?v=cdhLD0onUNw</a>
     </p>
     <p style="font:400 24px/1.55 var(--text)">
       ARTE, <em>Le dessous des cartes</em>, vidéo sur la guerre Russie–Ukraine et le commerce international.
@@ -878,7 +878,7 @@ function initGlobe(cv){
     const y = 1 - (i/(N-1))*2, r = Math.sqrt(1-y*y), th = ga*i;
     const k = i % 11;
     pts.push({x:Math.cos(th)*r, y, z:Math.sin(th)*r,
-      c: k===0 ? '#9ADCC9' : (k===5 ? '#E5B551' : '#A882FF'), big: k===0||k===5});
+      c: k===0 ? '#9ADCC9' : (k===5 ? '#E5B551' : '#7FA8E8'), big: k===0||k===5});
   }
   const edges = [];
   for(let i=0;i<N;i++) for(let j=i+1;j<N;j++){
@@ -901,12 +901,12 @@ function initGlobe(cv){
     ctx.clearRect(0,0,W,H);
     // halo
     const g = ctx.createRadialGradient(W/2,H/2,R*0.6,W/2,H/2,R*1.15);
-    g.addColorStop(0,'rgba(120,82,238,0)'); g.addColorStop(.85,'rgba(120,82,238,.12)'); g.addColorStop(1,'rgba(120,82,238,0)');
+    g.addColorStop(0,'rgba(37,99,201,0)'); g.addColorStop(.85,'rgba(37,99,201,.12)'); g.addColorStop(1,'rgba(37,99,201,0)');
     ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
     ctx.lineWidth = 2;
     for(const [i,j] of edges){
       const d = (P[i].d + P[j].d)/2;
-      ctx.strokeStyle = 'rgba(168,130,255,'+(0.06 + 0.42*d*d)+')';
+      ctx.strokeStyle = 'rgba(127,168,232,'+(0.06 + 0.42*d*d)+')';
       ctx.beginPath(); ctx.moveTo(P[i].sx,P[i].sy); ctx.lineTo(P[j].sx,P[j].sy); ctx.stroke();
     }
     for(let i=0;i<N;i++){
@@ -955,7 +955,7 @@ document.querySelectorAll('[data-dots]').forEach(el=>{
   svg.innerHTML = h;
 })();
 
-/* ═════════════ Réseau qui se scinde en deux blocs (diapo 12) ═════════════ */
+/* ═════════════ Réseau qui se scinde en deux blocs (diapo 7) ═════════════ */
 (function(){
   const svg = document.getElementById('g12'), NS='http://www.w3.org/2000/svg';
   let seed = 11; const rnd = ()=> (seed = seed*16807 % 2147483647)/2147483647;
@@ -979,12 +979,12 @@ document.querySelectorAll('[data-dots]').forEach(el=>{
   const els = edges.map(([i,j])=>{
     const l = document.createElementNS(NS,'line'), cross = nodes[i].g!==nodes[j].g;
     if(cross){ l.setAttribute('stroke','#C45B52'); l.setAttribute('stroke-width','2.5'); l.setAttribute('stroke-dasharray','6 6'); }
-    else { l.setAttribute('stroke','#A882FF'); l.setAttribute('stroke-width','2'); l.setAttribute('stroke-opacity','.55'); }
+    else { l.setAttribute('stroke','#7FA8E8'); l.setAttribute('stroke-width','2'); l.setAttribute('stroke-opacity','.55'); }
     svg.appendChild(l); return {l,i,j,cross};
   });
   const cs = nodes.map(n=>{
     const c = document.createElementNS(NS,'circle');
-    c.setAttribute('r', n.r); c.setAttribute('fill', n.g ? '#0B776E' : '#7852EE');
+    c.setAttribute('r', n.r); c.setAttribute('fill', n.g ? '#0B776E' : '#2563C9');
     svg.appendChild(c); return c;
   });
   let t=0, target=0, raf;
@@ -1007,7 +1007,7 @@ document.querySelectorAll('[data-dots]').forEach(el=>{
     if(t !== target) raf = requestAnimationFrame(tick);
   }
   render();
-  document.getElementById('s12').addEventListener('step', e=>{
+  document.getElementById('s7').addEventListener('step', e=>{
     target = e.detail >= 2 ? 1 : 0;
     cancelAnimationFrame(raf); tick();
   });
